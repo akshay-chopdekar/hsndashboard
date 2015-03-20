@@ -70,7 +70,7 @@
             <thead>
               <tr>
                 <th data-class="expand">Campaign Id</th>
-                <th>Campaign description</th>
+                <th>Campaign Type Id</th>
                 <th data-hide="phone">Tagline</th>
                 <th data-hide="phone">Status</th>
               </tr>
@@ -355,6 +355,7 @@
           console.log(output);
           $("#hotels").append(output);
           $('#hotels').multiselect();
+          $('#hotels').multiselect('refresh');
         })
         .fail(function() {
           console.log("error");
