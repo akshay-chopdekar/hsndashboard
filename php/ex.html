@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Jquery</title>
+	<script src="assets/js/vendor/jquery.min.js"></script>
+	<style>
+	.a{	
+		 width: 190px; 
+		height: 100px;
+		background-color: blue;
+	}
+	.b{	
+		 width: 190px; 
+		height: 100px;
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+<input id="box" type="text" name="box"></div>
+text:<span></span>
+
+
+<button id="large">Large</button>
+<button class="a">timepass</button>
+<button id="small">small</button><br/>
+<div class="a"></div>
+<div class="b"></div>
+<script>
+	$(window).load(function() {
+		$("input:text").keyup(function(event) {
+		  $("span").text($("#box").val());
+		});	
+
+		$("#large").on('click',function(event) {
+			var height=$("div").height();
+			// console.log(height*2);
+			// alert("second height height*2");
+
+
+			$(".a").animate({height: height+30, width:190});
+			// alert("hi");
+			
+			});
+		$("#small").on('click',function(event) {
+		/*	var height=$("div").height();
+			$(".a").animate({height: height-30, width: 190});*/
+			$("div.b").hide();
+		});
+		
+	
+		    $(document).ready(function() {
+		        $('#example-simulate-single').multiselect({
+		            on: {
+		                change: function(option, checked) {
+		                    var values = [];
+		                    $('#example-simulate-single option').each(function() {
+		                        if ($(this).val() !== option.val()) {
+		                            values.push($(this).val());
+		                        }
+		                    });
+		 
+		                    $('#example-simulate-single').multiselect('deselect', values);
+		                }
+		            }
+		        });
+		    });
+
+	});
+
+</script><br/>
+
+
+</body>
+</html>

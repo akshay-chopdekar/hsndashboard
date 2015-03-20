@@ -1,0 +1,80 @@
+@media (max-width: 2200px){
+	body
+	{
+		zoom:1.5;
+	}
+}
+@media (max-width: 1366px){
+	body
+	{
+		zoom:1;
+	}
+}
+@media (min-width: 1200px){
+	.container
+	{
+	  width: 970px;
+	}
+}
+
+.content
+{
+  padding-left: 83px;
+}
+
+@media (max-width: 992px){
+  .appleComingSoon
+  {
+    position: static;
+  }
+  .content
+  {
+    padding-left: 0px;
+  }
+  .content .tagline
+  {
+  	margin-top: 30px;
+  }
+  .bs-example
+  {
+  	width: 177px;
+  	margin-top: 106px;
+  	margin-left: 24px;
+  }
+  .glare
+  {
+  	height: 562px;
+  	left: -18px;
+  	width: 272px;
+  }
+}
+
+@media (max-width: 767px){
+	.iphone
+	{
+		display: none;
+	}
+	#navbar ul li
+	{
+		margin: 10px 20px;
+	}
+	#navbar
+	{
+		padding: 30px 5px;
+	}
+	#navbar ul
+	{
+		margin: 0;
+		padding:0;
+		overflow: auto;
+	}
+	.logo
+	{
+		margin: 5px;
+		width: 100px;
+	}
+	.content
+	{
+		padding:0 15px;
+	}
+}
