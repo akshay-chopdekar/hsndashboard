@@ -35,10 +35,10 @@ $columns = array(
 
 // SQL server connection information
 $sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db'   => 'hotelsamenight',
-    'host' => 'localhost'
+	'user' => 'helixtech01',
+	'pass' => 'sysadmin',
+	'db'   => 'hotelsamenight',
+	'host' => '166.62.18.107'
 );
 
 

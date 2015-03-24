@@ -16,11 +16,17 @@ while($row1 = mysqli_fetch_assoc($row))
 	array_push($reviews, $row1);
 }
 // var_dump($images);
-
+if(!empty($reviews))
+{
 $response['rev']=$reviews;
 $response['status']=true;
 }
 
+else
+{
+	$response['status']=false;
+}
+}
 else
 {
 	$response['status']=false;

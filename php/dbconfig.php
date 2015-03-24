@@ -1,7 +1,7 @@
 <?php
-$username = "root";
-$password = "";
-$hostname = "localhost"; 
+$username = "helixtech01";
+$password = "sysadmin";
+$hostname = "166.62.18.107"; 
 $database = "hotelsamenight"; 
 //connection to the database
 

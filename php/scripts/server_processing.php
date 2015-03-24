@@ -31,18 +31,17 @@ $primaryKey = 'hotelId';
 $columns = array(
 	array( 'db' => 'hotelId', 'dt' => 0 ),
 	array( 'db' => 'hotelName',  'dt' => 1 ),
-	array( 'db' => 'star',  'dt' => 2 ),
-	array( 'db' => 'timezone',   'dt' => 3 ),
-	array( 'db' => 'category',   'dt' => 4 ),
-	array( 'db' => 'description',   'dt' => 5 )
+	array( 'db' => 'description',  'dt' => 2 ),
+	array( 'db' => 'category',   'dt' => 3 ),
+	array( 'db' => 'latlong',   'dt' => 4 )
 );
 
 // SQL server connection information
 $sql_details = array(
-	'user' => 'root',
-	'pass' => '',
+	'user' => 'helixtech01',
+	'pass' => 'sysadmin',
 	'db'   => 'hotelsamenight',
-	'host' => 'localhost'
+	'host' => '166.62.18.107'
 );
 
 

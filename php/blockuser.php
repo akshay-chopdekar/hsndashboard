@@ -10,7 +10,8 @@ echo "hotel is is ".$hotelId." time zone ".$timezone." description is ".$descrip
 var_dump($_POST);
 var_dump($_FILES);
 //**** timezone and description setting
-$sql="update hotel set timezone='{$timezone}',description='{$description}' where hotelId={$hotelId}";
+// $sql="update hotel set timezone='{$timezone}',description='{$description}' where hotelId={$hotelId}";
+$sql="update hotel set hotelName='{$_POST['hotelName']}',star='{$_POST['star']}',roomAmount='{$_POST['roomAmount']}',star='{$_POST['star']}',roomAmount='{$_POST['roomAmount']}',checkInTime='{$_POST['checkInTime']}',checkOutTime='{$_POST['checkOutTime']}',breakfast='{$_POST['breakfast']}',tradeName='{$_POST['tradeName']}',address='{$_POST['address']}',postCode='{$_POST['postCode']}',phoneNumber='{$_POST['phoneNumber']}',fax='{$_POST['fax']}',fax='{$_POST['fax']}',emailId='{$_POST['emailId']}',website='{$_POST['website']}',salesPerson='{$_POST['salesPerson']}',salesPersonContact='{$_POST['salesPersonContact']}',accountName='{$_POST['accountName']}',accountContact='{$_POST['accountContact']}',wifi='{$_POST['wifi']}',complementaryWifi='{$_POST['complementaryWifi']}' where hotelId={$hotelId}";
 $result=mysqli_query($db,$sql) or mysqli_error($db);
 
 if($result)

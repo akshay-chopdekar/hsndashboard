@@ -37,11 +37,12 @@ $columns = array(
 
 // SQL server connection information
 $sql_details = array(
-	'user' => 'root',
-	'pass' => '',
+	'user' => 'helixtech01',
+	'pass' => 'sysadmin',
 	'db'   => 'hotelsamenight',
-	'host' => 'localhost'
+	'host' => '166.62.18.107'
 );
+
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
