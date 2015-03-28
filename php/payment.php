@@ -56,30 +56,32 @@ if(!isset($_SESSION[ 'userLogged']))
           <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
      <ul class="nav">
-       <li><a  href="hotelInfo.php">Hotel Info</a>
-       </li>
-       <li><a class="active" href="categoryList.php">Category List</a>
-       </li>
-       <li><a href="campaign.php">Campaign</a>
-       </li>
-       <li><a href="userReview.php">User Reviews</a>
-       </li>
-       <li><a href="promoCode.php">Promo Code</a>
-       </li>
-        <li><a href="payment.php">Payment</a>
-      </li>
-     </ul>
+            <li><a  href="hotelInfo.php">Hotel Info</a>
+            </li>
+            <li><a  href="categoryList.php">Category List</a>
+            </li>
+            <li><a href="campaign.php">Campaign</a>
+            </li>
+            <li><a href="userReview.php">User Reviews</a>
+            </li>
+            <li><a href="promoCode.php">Promo Code</a>
+            </li>
+             <li><a class="active" href="payment.php">Payment</a>
+           </li>
+          </ul>
       </div>
       <div class="col-xs-9">
         <strong>Dashboard</strong>
-
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
+
+
+
         <div class="form-inline">
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th data-class="expand">HOTEL NAME</th>
-                <th>CATEGORY</th>
+                <th data-class="expand">HOTEL ID</th>
+                <th>HOTEL NAME</th>
               </tr>
             </thead>
             <!--tbody section is required-->
@@ -100,27 +102,62 @@ if(!isset($_SESSION[ 'userLogged']))
                     </h4>
           </div>
           <div class="modal-body">
-            <table id="modaltable">
-              <tr>
-                <td><span class="modalBodyTerms">hotel name:</span>
-                </td>
-                <td><span id="hotel"></span>
-                </td>
-              </tr>
-              <tr>
-                <td><span class="modalBodyTerms">category:</span>
-                </td>
-                <td>
-                  <select id="category" class="form-control">
-                  </select>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button id="deletePost" type="button" class="btn btn-primary">
-              update category
-            </button>
+
+           <form class="form-horizontal" role="form" id="myform1" enctype="multipart/form-data">
+             <div class="form-group">
+               <label class="control-label col-sm-2" >Hotel ID</label>
+               <div class="col-sm-10">
+                 <p id="hotelId"></p>
+               </div>
+             </div>
+
+             <div class="form-group">
+               <label class="control-label col-sm-2" >Hotel Name</label>
+               <div class="col-sm-10">
+                 <p id="hotelName"></p>
+               </div>
+             </div>
+             <!-- <div class="form-group">
+               <label class="control-label col-sm-2" >Price</label>
+               <div class="col-sm-10">
+                 <p id="price"></p>
+               </div>
+             </div>
+             <div class="form-group">
+               <label class="control-label col-sm-2" >Discount</label>
+               <div class="col-sm-10">
+                 <p id="discount"></p>
+               </div>
+             </div>
+               <div class="form-group">
+               <label class="control-label col-sm-2" >Same Day Price</label>
+               <div class="col-sm-10">
+                 <p id="samedayprice"></p>
+               </div>
+             </div> -->
+
+             <div class="form-group">
+               <label class="control-label col-sm-2" for="email">Admin Profit</label>
+               <input type="text" name="profit" id="profit">
+             </div>
+
+               <!-- <div class="form-group">
+               <label class="control-label col-sm-2" >Final Price</label>
+               <div class="col-sm-10">
+                 <p id="finalprice"></p>
+               </div>
+                            </div>
+                -->
+
+         </div>
+         <div class="modal-footer">
+           <div class="form-group">
+               <div class="col-sm-offset-2 col-sm-10">
+                 <input id="update" type="submit" class="btn btn-default" name="submit" value="Insert">
+               </div>
+             </div>
+         </div>
+         </form>
           </div>
         </div>
         <!-- /.modal-content -->
@@ -154,7 +191,7 @@ if(!isset($_SESSION[ 'userLogged']))
       serverSide: true,
       pagingType: "input",
       autoWidth: false,
-      ajax: 'scripts/server_processingforPost.php',
+      ajax: 'scripts/server_processing_payment.php',
       preDrawCallback: function() {
         // Initialize the responsive datatables helper once.
         if (!responsiveHelper) {
@@ -173,7 +210,7 @@ if(!isset($_SESSION[ 'userLogged']))
 
   //To add entry into table
   $(document).ready(function() {
-    var category,hotelName,output="";
+    var category,hotelId,output="",price;
     var table = $('#example').DataTable();
 
     $('#example tbody').on('click', 'tr', function() {
@@ -185,46 +222,43 @@ if(!isset($_SESSION[ 'userLogged']))
         $(this).addClass('success');
       }
 
-      hotelName = $(this).find('td').eq(0).text();
+      hotelId = $(this).find('td').eq(0).text();
        /*Get userId for blocking user*/
       /*Get userId for blocking user*/
-      $('#hotel').html(($(this).find('td').eq(0).text()));
-      $('#category').val(($(this).find('td').eq(1).text()));
+      $('#hotelId').html(($(this).find('td').eq(0).text()));
+      $('#hotelName').html(($(this).find('td').eq(1).text()));
+      $("#profit").val('');
+      // alert(price);
       // alert($(this).find('td').eq(1).text());
        console.log('hotelName is:' + $(this).find('td').eq(0).text());
 
-       $.ajax({
-         url: 'scripts/getcategory.php',
-         type: 'GET',
-         dataType: 'json',
-         // data: {param1: 'value1'},
-       })
-       .done(function(data) {
-         console.log("success");
-         console.log(data);
-         console.log(data['category'][0]['categoryName']);
-         output="";
-         $("#category").empty();
-         for(var i=0;i<data['category'].length;i++)
-         {
-            var dat=data['category'][i]['categoryName'];
-            output+="<option value="+dat+">"+dat+"</option>";          
-         }
-         console.log(output);
-         $("#category").append(output);
-       })
-       .fail(function() {
-         console.log("error");
+         $.ajax({
+           url: 'scripts/setprofit.php',
+           type: 'GET',
+           dataType: 'json',
+           data: {
+             hotelId: hotelId
+           },
+         })
+         .done(function(data) {
+           console.log("success 1st");
+           console.log(data);
+           $("#profit").val(data['profit']['profit']);
+         })
+         .fail(function() {
+           console.log("error 1st");
+         });
        });
-       
-    });
+      
+      
+    
 
     $('#myModal').on('hidden.bs.modal', function(e) {
        
       table.$('tr.success').removeClass('success');
     })
 
-    $('#deletePost').click(function() {
+/*    $('#deletePost').click(function() {
       category = $("#category option:selected").val();
        console.log('category is:' + category);
       $.ajax({
@@ -247,7 +281,32 @@ if(!isset($_SESSION[ 'userLogged']))
           //alert(data.response);
         })
       $('#myModal').modal('hide');
+    });*/
+
+  $("form#myform1").on('submit', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+    // alert("hi");
+    price=$("#profit").val();
+    alert(price);
+    $.ajax({
+      url: 'scripts/setprofit.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        hotelId: hotelId,
+        profit:price
+      },
+    })
+    .done(function(data) {
+      console.log("success 2nd");
+      console.log("data is:"+data);
+    })
+    .fail(function() {
+      console.log("error 2nd");
     });
+  });
+  
   });
   </script>
 </body>

@@ -1,4 +1,9 @@
-<?php /*session_start(); if(!isset($_SESSION[ 'userLogged'])) { header( "Location: ../index.php"); }*/ ?>
+<?php session_start(); 
+if(!isset($_SESSION[ 'userLogged'])) 
+  { 
+    header( "Location: ../index.php"); 
+  } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +41,24 @@
   .table td.centered-cell {
     text-align: center;
   }
+  .logo{
+   height: 161px;
+   width: 35%;
+   margin: auto;
+   display: block;
+   padding-top: 11px;
+  }
+  p{
+    margin-top:7px;
+  }
+  input.form-control{
+    margin-top:7px;
+  }
+  @media screen and (min-width:768px){
+    .form-horizontal .control-label{
+      font-size:13px;
+    }
+  }
   </style>
 </head>
 
@@ -44,20 +67,22 @@
     <div class="row">
       <div class="col-xs-3 navColor" style="width:260px;padding-left: 0px;">
         <div class="block">
-          <img class="center-block logoDashboardWidth" src="../images/logoDashboard.png">
+          <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
     <ul class="nav">
-      <li><a class="active" href="hotelInfo.php">hotel info</a>
-      </li>
-      <li><a href="categoryList.php">category list</a>
-      </li>
-      <li><a href="campaign.php">Campaign</a>
-      </li>
-      <li><a href="userReview.php">User Reviews</a>
-      </li>
-      <li><a href="promoCode.php">Promo Code</a>
-      </li>
-    </ul>
+           <li><a class="active" href="hotelInfo.php">Hotel Info</a>
+           </li>
+           <li><a  href="categoryList.php">Category List</a>
+           </li>
+           <li><a href="campaign.php">Campaign</a>
+           </li>
+           <li><a href="userReview.php">User Reviews</a>
+           </li>
+           <li><a href="promoCode.php">Promo Code</a>
+           </li>
+            <li><a href="payment.php">Payment</a>
+          </li>
+         </ul>
       </div>
       <div class="col-xs-9">
         <strong>Dashboard</strong>
@@ -71,7 +96,8 @@
                 <th>Hotel Name</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th>Lat long</th>
+                <th>Lat</th>
+                <th>Long</th>
               </tr>
             </thead>
             <!--tbody section is required-->
@@ -84,7 +110,10 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
       <div class="modal-dialog">
-        <div class="modal-content" style="width: 600px;height:600px;overflow:-moz-scrollbars-vertical;overflow-y:auto;">
+        <div class="wrapper">
+          
+        </div>
+        <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
             </button>
@@ -92,7 +121,7 @@
                        User Details
                     </h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" style="width: 600px;height:461px;overflow:-moz-scrollbars-vertical;overflow-y:auto;">
             <form class="form-horizontal" role="form" id="myform" enctype="multipart/form-data">
               <div class="form-group" >
                 <label class="control-label col-sm-2" for="email">Hotel Id</label>
@@ -103,176 +132,341 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" >Hotel Name</label>
                 <div class="col-sm-10">
-                  <input type="text" name="hotelName" id="hotelName">
+                  <input class="form-control" type="text" name="hotelName" id="hotelName">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-2" >Star</label>
                 <div class="col-sm-10">
-                  <input type="text" name="star" id="star">
+                  <input class="form-control" type="text" name="star" id="star">
                 </div>
               </div>
               <div class="form-group">
               <label class="control-label col-sm-2" >Room Amount</label>
                 <div class="col-sm-10">
-                  <input type="text" name="roomAmount" id="roomAmount">
+                  <input class="form-control" type="text" name="roomAmount" id="roomAmount">
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2">check In Time</label>
                 <div class="col-sm-10">
-                  <input type="text" name="checkInTime" id="checkInTime">
+                  <input class="form-control" type="text" name="checkInTime" id="checkInTime">
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2">check Out Time</label>
                 <div class="col-sm-10">
-                  <input type="text" name="checkOutTime" id="checkOutTime">
+                  <input class="form-control" type="text" name="checkOutTime" id="checkOutTime">
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2">breakfast</label>
                 <div class="col-sm-10">
-                  <input type="text" name="breakfast" id="breakfast">
+                <textarea id="breakfast" cols="60" rows="3" class="form-control"></textarea>
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2">tradeName</label>
                 <div class="col-sm-10">
-                  <input type="text" name="tradeName" id="tradeName" >
+                  <textarea id="tradeName" cols="60" rows="3" class="form-control"></textarea>
+
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2">address</label>
                 <div class="col-sm-10">
-                   <textarea id="address" cols="60" class="form-control"></textarea>
+                   <textarea id="address" cols="60" rows="3" class="form-control"></textarea>
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2">postCode</label>
                 <div class="col-sm-10">
-                  <input type="text" name="postCode" id="postCode">
+                  <input class="form-control" type="text" name="postCode" id="postCode">
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2" >phoneNumber</label>
                 <div class="col-sm-10">
-                  <input type="text" name="phoneNumber" id="phoneNumber">
+                  <input class="form-control" type="text" name="phoneNumber" id="phoneNumber">
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2" >fax</label>
                 <div class="col-sm-10">
-                  <input type="text" name="fax" id="fax">
+                  <input class="form-control" type="text" name="fax" id="fax">
                 </div>
               </div>
                <div class="form-group">
               <label class="control-label col-sm-2" >emailId</label>
                 <div class="col-sm-10">
-                  <input type="text" name="emailId" id="emailId">
+                  <input class="form-control" type="text" name="emailId" id="emailId">
                 </div>
               </div>   <div class="form-group">
               <label class="control-label col-sm-2" >website</label>
                 <div class="col-sm-10">
-                  <input type="text" name="website" id="website">
+                  <input class="form-control" type="text" name="website" id="website">
                 </div>
               </div> 
             <div class="form-group">
               <label class="control-label col-sm-2" >salesPerson</label>
                 <div class="col-sm-10">
-                  <input type="text" name="salesPerson" id="salesPerson">
+                  <input class="form-control" type="text" name="salesPerson" id="salesPerson">
+
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >salesPersonContact</label>
                 <div class="col-sm-10">
-                  <input type="text" name="salesPersonContact" id="salesPersonContact">
+                  <input class="form-control" type="text" name="salesPersonContact" id="salesPersonContact">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >accountName</label>
                 <div class="col-sm-10">
-                  <input type="text" name="accountName" id="accountName">
+                  <input class="form-control" type="text" name="accountName" id="accountName">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >accountContact</label>
                 <div class="col-sm-10">
-                  <input type="text" name="accountContact" id="accountContact">
+                  <input class="form-control" type="text" name="accountContact" id="accountContact">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >wifi</label>
                 <div class="col-sm-10">
-                  <input type="text" name="wifi" id="wifi">
+                  <input class="form-control" type="text" name="wifi" id="wifi">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >complementaryWifi</label>
                 <div class="col-sm-10">
-                  <input type="text" name="complementaryWifi" id="complementaryWifi">
+                  <input class="form-control" type="text" name="complementaryWifi" id="complementaryWifi">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >selfParking</label>
                 <div class="col-sm-10">
-                  <input type="text" name="selfParking" id="selfParking">
+                  <input class="form-control" type="text" name="selfParking" id="selfParking">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >selfParkingRate</label>
                 <div class="col-sm-10">
-                  <input type="text" name="selfParkingRate" id="selfParkingRate">
+                  <input class="form-control" type="text" name="selfParkingRate" id="selfParkingRate">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >valeParking</label>
                 <div class="col-sm-10">
-                  <input type="text" name="valeParking" id="valeParking">
+                  <input class="form-control" type="text" name="valeParking" id="valeParking">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >valeParkingRate</label>
                 <div class="col-sm-10">
-                  <input type="text" name="valeParkingRate" id="valeParkingRate">
+                  <input class="form-control" type="text" name="valeParkingRate" id="valeParkingRate">
                 </div>
             </div>
               <div class="form-group">
               <label class="control-label col-sm-2" >complementaryParking</label>
                 <div class="col-sm-10">
-                  <input type="text" name="complementaryParking" id="complementaryParking">
+                  <input class="form-control" type="text" name="complementaryParking" id="complementaryParking">
                 </div>
             </div>
 
             <div class="form-group">
               <label class="control-label col-sm-2" >conciergeService</label>
                 <div class="col-sm-10">
-                  <input type="text" name="conciergeService" id="conciergeService">
+                  <input class="form-control" type="text" name="conciergeService" id="conciergeService">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >petFriendly</label>
                 <div class="col-sm-10">
-                  <input type="text" name="petFriendly" id="petFriendly">
+                  <input class="form-control" type="text" name="petFriendly" id="petFriendly">
                 </div>
             </div>
 
             <div class="form-group">
               <label class="control-label col-sm-2" >outdoorPool</label>
                 <div class="col-sm-10">
-                  <input type="text" name="outdoorPool" id="outdoorPool">
+                  <input class="form-control" type="text" name="outdoorPool" id="outdoorPool">
                 </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" >indoorPool</label>
                 <div class="col-sm-10">
-                  <input type="text" name="indoorPool" id="indoorPool">
+                  <input class="form-control" type="text" name="indoorPool" id="indoorPool">
                 </div>
             </div>
                <div class="form-group">
               <label class="control-label col-sm-2" >fitnessCenter</label>
                 <div class="col-sm-10">
-                  <input type="text" name="fitnessCenter" id="fitnessCenter">
+                  <input class="form-control" type="text" name="fitnessCenter" id="fitnessCenter">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >sauna</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="sauna" id="sauna">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >spaServices</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="spaServices" id="spaServices">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >airportShuttle</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="airportShuttle" id="airportShuttle">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >rooftop</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="rooftop" id="rooftop">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >dryCleaning</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="dryCleaning" id="dryCleaning">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >ironing</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="ironing" id="ironing">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >nonSmoking</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="nonSmoking" id="nonSmoking">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >notes</label>
+                <div class="col-sm-10">
+                  <textarea id="notes" cols="60" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >foodBeverage</label>
+                <div class="col-sm-10">
+                  <textarea id="foodBeverage" cols="60" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >around</label>
+                <div class="col-sm-10">
+                  <textarea id="around" cols="60" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >24hrRoomService</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="24hrRoomService" id="24hrRoomService">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >roomService</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="roomService" id="roomService">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >restaurantOnsite</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="restaurantOnsite" id="restaurantOnsite">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >barOnsite</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="barOnsite" id="barOnsite">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >extraGuestPolicy</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="extraGuestPolicy" id="extraGuestPolicy">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >flatScreenTV</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="flatScreenTV" id="flatScreenTV">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >satelliteTV</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="satelliteTV" id="satelliteTV">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >miniBar</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="miniBar" id="miniBar">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >hotBeverages</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="hotBeverages" id="hotBeverages">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >kettle</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="kettle" id="kettle">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >electronicSafe</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="electronicSafe" id="electronicSafe">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >airConditioning</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="airConditioning" id="airConditioning">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >hairDrier</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="hairDrier" id="hairDrier">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >workingDesk</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="workingDesk" id="workingDesk">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >childrenPolicy</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="childrenPolicy" id="childrenPolicy">
+                </div>
+            </div>
+               
+               <div class="form-group">
+              <label class="control-label col-sm-2" >category</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="category" id="category">
+                </div>
+            </div>
+               <div class="form-group">
+              <label class="control-label col-sm-2" >lat long</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="text" name="latlong" id="latlong">
                 </div>
             </div>
 
@@ -303,25 +497,26 @@
               </div>
 
               <div class="control-label">
-                <input type="file" name="fileToUpload" id="fileToUpload" value="">
+                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" value="">
                 <label class="control-label col-sm-2">images</label>
                 <!-- <p id="image"></p> -->
                 <ul id="image" style="width: 400px;height: 200px;overflow:-moz-scrollbars-vertical;overflow-y:auto;"></ul>
               </div>
-
+            </div>
+                <div class="modal-footer">
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <input id="submit" type="submit" class="btn btn-default" name="submit" value="submit">
+                  <input class="form-control" id="submit" type="submit" class="btn btn-default" name="submit" value="submit">
                 </div>
               </div>
                 <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <input id="delete" type="button" class="btn btn-default" name="delete" value="delete">
+                  <input class="form-control" id="delete" type="button" class="btn btn-default" name="delete" value="delete">
                 </div>
               </div>
-
+                </div>
             </form>
-          </div>
+          
 
         </div>
         <!-- /.modal-content -->
@@ -351,7 +546,7 @@
 
     tableElement.dataTable({
 
-      processing: true,
+      processing: false,
       serverSide: true,
       pagingType: "input",
       autoWidth: false,
@@ -378,7 +573,7 @@
   });
 
   $(document).ready(function() {
-    var hotelId,timezone,description,url="";
+    var hotelId,timezone,description,address,url="",breakfast,tradeName,notes,foodBeverage,around;
     var files = new FormData();
     var table = $('#example').DataTable();
 
@@ -416,8 +611,8 @@
         $("#roomAmount").val(data['info'][0]['roomAmount']);
         $("#checkInTime").val(data['info'][0]['checkInTime']);
         $("#checkOutTime").val(data['info'][0]['checkOutTime']);
-        $("#breakfast").val(data['info'][0]['breakfast']);
-        $("#tradeName").val(data['info'][0]['tradeName']);
+        $("#breakfast").text(data['info'][0]['breakfast']);
+        $("#tradeName").text(data['info'][0]['tradeName']);
         $("#address").text(data['info'][0]['address']);
         $("#postCode").val(data['info'][0]['postCode']);
         $("#phoneNumber").val(data['info'][0]['phoneNumber']);
@@ -440,7 +635,35 @@
         $("#outdoorPool").val(data['info'][0]['outdoorPool']);
         $("#indoorPool").val(data['info'][0]['indoorPool']);
         $("#fitnessCenter").val(data['info'][0]['fitnessCenter']);
-
+        $("#sauna").val(data['info'][0]['sauna']);
+        $("#spaServices").val(data['info'][0]['spaServices']);
+        $("#airportShuttle").val(data['info'][0]['airportShuttle']);
+        $("#rooftop").val(data['info'][0]['rooftop']);
+        $("#dryCleaning").val(data['info'][0]['dryCleaning']);
+        $("#ironing").val(data['info'][0]['ironing']);
+        $("#nonSmoking").val(data['info'][0]['nonSmoking']);
+        $("#notes").text(data['info'][0]['notes']);
+        $("#foodBeverage").text(data['info'][0]['foodBeverage']);
+        $("#around").text(data['info'][0]['around']);
+        $("#24hrRoomService").val(data['info'][0]['24hrRoomService']);
+        $("#roomService").val(data['info'][0]['roomService']);
+        $("#restaurantOnsite").val(data['info'][0]['restaurantOnsite']);
+        $("#barOnsite").val(data['info'][0]['barOnsite']);
+        $("#extraGuestPolicy").val(data['info'][0]['extraGuestPolicy']);
+        $("#flatScreenTV").val(data['info'][0]['flatScreenTV']);
+        $("#satelliteTV").val(data['info'][0]['satelliteTV']);
+        $("#miniBar").val(data['info'][0]['miniBar']);
+        $("#hotBeverages").val(data['info'][0]['hotBeverages']);
+        $("#kettle").val(data['info'][0]['kettle']);
+        $("#electronicSafe").val(data['info'][0]['electronicSafe']);
+        $("#airConditioning").val(data['info'][0]['airConditioning']);
+        $("#workingDesk").val(data['info'][0]['workingDesk']);
+        $("#hairDrier").val(data['info'][0]['hairDrier']);
+        $("#childrenPolicy").val(data['info'][0]['childrenPolicy']);
+        $("#timezone").val(data['info'][0]['timezone']);
+        $("#category").val(data['info'][0]['category']);
+        $("#description").val(data['info'][0]['description']);
+        $("#latlong").val(data['info'][0]['latlong']);
 
 
 
@@ -571,6 +794,13 @@ $("#delete").on('click', function(event) {
       // alert("id is"+url);
       timezone=$("#timezone").val();
       description=$("#description").val();
+      address=$("#address").val();
+      breakfast=$("#breakfast").val();
+      tradeName=$("#tradeName").val();
+      notes=$("#notes").val();
+      foodBeverage=$("#foodBeverage").val();
+      around=$("#around").val();
+      
       console.log("timezone is "+timezone);
       console.log("description is "+description);
       console.log("url is"+url);
@@ -579,6 +809,12 @@ $("#delete").on('click', function(event) {
       data.append('url',url);
       data.append('description',description);
       data.append('hotelId',hotelId);
+      data.append('address',address);
+      data.append('breakfast',breakfast);
+      data.append('tradeName',tradeName);
+      data.append('notes',notes);
+      data.append('foodBeverage',foodBeverage);
+      data.append('around',around);
 
 
       $.ajax({

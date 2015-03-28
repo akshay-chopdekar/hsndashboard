@@ -5,6 +5,7 @@
  */
 
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -2058,7 +2059,7 @@ pre code {
   }
 }
 table {
-  background-color: transparent;
+  background-color: white;
 }
 th {
   text-align: left;
@@ -2769,9 +2770,8 @@ fieldset[disabled] .btn {
   opacity: .65;
 }
 .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  color: white;
+  background-color: #f1695b;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -2810,19 +2810,11 @@ fieldset[disabled] .btn-default.active {
   background-color: #333;
 }
 .btn-primary {
-  color: #fff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  color: white;
+  background-color: #f1695b;
+
 }
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
-  color: #fff;
-  background-color: #3071a9;
-  border-color: #285e8e;
-}
+
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
@@ -3177,7 +3169,7 @@ tbody.collapse.in {
 .dropdown-menu > .active > a:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #F1695B;
   outline: 0;
 }
 .dropdown-menu > .disabled > a,
@@ -3588,11 +3580,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
   padding: 10px 15px;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
-  text-decoration: none;
-  background-color: #eee;
-}
+
 .nav > li.disabled > a {
   color: #777;
 }

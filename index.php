@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BetterTheGame DashBoard</title>
+    <title>HSN Admin</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -25,8 +25,8 @@
 <!--     <h1>Hello, world!</h1> -->
   <div class="container-fluid">
     <div class="center-div">
-      <img src="images/logo.png" class="img-responsive center-block">
-      <img src="images/text_img.png" class="img-responsive center-block">
+      <img src="images/HSN_logo.png" class="img-responsive center-block">
+      <!-- <img src="images/text_img.png" class="img-responsive center-block"> -->
       <h4 class="text-center welAdmin">Welcome Admin!</h4>
       <form class="navbar-form" method="post" action="php/usercheck.php">
         <div class="form-group">

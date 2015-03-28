@@ -1,9 +1,9 @@
 <?php
-// session_start();
-// if(!isset($_SESSION['userLogged']))
-// {
-//    header("Location: ../index.php");
-// }
+session_start();
+if(!isset($_SESSION['userLogged']))
+{
+   header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,8 +53,6 @@
     		<div class="col-md-10">
     			<strong>Dashboard</strong>
     			<a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
-
-
 
     			<div class="form-inline">
     			    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

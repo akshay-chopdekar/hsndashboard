@@ -1,4 +1,10 @@
-<?php /*session_start(); if(!isset($_SESSION[ 'userLogged'])) { header( "Location: ../index.php"); }*/ ?>
+<?php 
+session_start(); 
+if(!isset($_SESSION[ 'userLogged'])) 
+  { 
+    header( "Location: ../index.php"); 
+  } 
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,6 +56,13 @@
       padding-right: 23px;
     }
   }
+  .logo{
+   height: 161px;
+   width: 35%;
+   margin: auto;
+   display: block;
+   padding-top: 11px;
+  }
   </style>
 </head>
 
@@ -58,20 +71,22 @@
     <div class="row">
       <div class="col-xs-3 navColor" style="width:260px;padding-left: 0px;">
         <div class="block">
-          <img class="center-block logoDashboardWidth" src="../images/logoDashboard.png">
+          <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
       <ul class="nav">
-            <li><a  href="hotelInfo.php">hotel info</a>
+             <li><a  href="hotelInfo.php">Hotel Info</a>
+             </li>
+             <li><a  href="categoryList.php">Category List</a>
+             </li>
+             <li><a href="campaign.php">Campaign</a>
+             </li>
+             <li><a class="active" href="userReview.php">User Reviews</a>
+             </li>
+             <li><a href="promoCode.php">Promo Code</a>
+             </li>
+              <li><a href="payment.php">Payment</a>
             </li>
-            <li><a href="categoryList.php">category list</a>
-            </li>
-            <li><a href="campaign.php">Campaign</a>
-            </li>
-            <li><a class="active" href="userReview.php">User Reviews</a>
-            </li>
-            <li><a href="promoCode.php">Promo Code</a>
-            </li>
-          </ul>
+           </ul>
       </div>
       <div class="col-xs-9">
         <strong>Dashboard</strong>
@@ -82,7 +97,7 @@
             <thead>
               <tr>
                 <th data-class="expand">Hotel ID</th>
-                <th>User Id</th>
+                <th>Hotel Name</th>
               </tr>
             </thead>
             <!--tbody section is required-->
@@ -173,7 +188,7 @@
 
     tableElement.dataTable({
 
-      processing: true,
+      processing: false,
       serverSide: true,
       pagingType: "input",
       autoWidth: false,

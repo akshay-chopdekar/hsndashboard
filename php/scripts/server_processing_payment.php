@@ -30,12 +30,7 @@ $primaryKey = 'hotelId';
 // indexes
 $columns = array(
 	array( 'db' => 'hotelId', 'dt' => 0 ),
-	array( 'db' => 'hotelName',  'dt' => 1 ),
-	array( 'db' => 'description',  'dt' => 2 ),
-	array( 'db' => 'category',   'dt' => 3 ),
-	array( 'db' => 'latitude',   'dt' => 4 ),
-	array( 'db' => 'longitude',   'dt' => 5 )
-
+	array( 'db' => 'hotelName',  'dt' => 1 )
 );
 
 // SQL server connection information

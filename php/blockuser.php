@@ -4,14 +4,22 @@ session_start();
 $hotelId=$_POST['hotelId'];
 $timezone=$_POST['timezone'];
 $description=$_POST['description'];
+$address=$_POST['address'];
 $imageUrl=$_POST['url'];
+$breakfast=$_POST['breakfast'];
+$tradeName=$_POST['tradeName'];
+$notes=$_POST['notes'];
+$foodBeverage=$_POST['foodBeverage'];
+$around=$_POST['around'];
+
+echo "description is".$description." address is ".$address." imageUrl is ".$imageUrl." breakfast ".$breakfast." tradeName ".$tradeName." notes ".$notes." foodBeverage ".$foodBeverage." around ".$around;
 
 echo "hotel is is ".$hotelId." time zone ".$timezone." description is ".$description." url is ".$imageUrl;
 var_dump($_POST);
 var_dump($_FILES);
 //**** timezone and description setting
 // $sql="update hotel set timezone='{$timezone}',description='{$description}' where hotelId={$hotelId}";
-$sql="update hotel set hotelName='{$_POST['hotelName']}',star='{$_POST['star']}',roomAmount='{$_POST['roomAmount']}',star='{$_POST['star']}',roomAmount='{$_POST['roomAmount']}',checkInTime='{$_POST['checkInTime']}',checkOutTime='{$_POST['checkOutTime']}',breakfast='{$_POST['breakfast']}',tradeName='{$_POST['tradeName']}',address='{$_POST['address']}',postCode='{$_POST['postCode']}',phoneNumber='{$_POST['phoneNumber']}',fax='{$_POST['fax']}',fax='{$_POST['fax']}',emailId='{$_POST['emailId']}',website='{$_POST['website']}',salesPerson='{$_POST['salesPerson']}',salesPersonContact='{$_POST['salesPersonContact']}',accountName='{$_POST['accountName']}',accountContact='{$_POST['accountContact']}',wifi='{$_POST['wifi']}',complementaryWifi='{$_POST['complementaryWifi']}' where hotelId={$hotelId}";
+$sql="update hotel set hotelName='{$_POST['hotelName']}',star='{$_POST['star']}',roomAmount='{$_POST['roomAmount']}',star='{$_POST['star']}',roomAmount='{$_POST['roomAmount']}',checkInTime='{$_POST['checkInTime']}',checkOutTime='{$_POST['checkOutTime']}',breakfast='{$_POST['breakfast']}',tradeName='{$_POST['tradeName']}',address='{$_POST['address']}',postCode='{$_POST['postCode']}',phoneNumber='{$_POST['phoneNumber']}',fax='{$_POST['fax']}',fax='{$_POST['fax']}',emailId='{$_POST['emailId']}',website='{$_POST['website']}',salesPerson='{$_POST['salesPerson']}',salesPersonContact='{$_POST['salesPersonContact']}',accountName='{$_POST['accountName']}',accountContact='{$_POST['accountContact']}',wifi='{$_POST['wifi']}',complementaryWifi='{$_POST['complementaryWifi']}',selfParking='{$_POST['selfParking']}',selfParkingRate='{$_POST['selfParkingRate']}',valeParking='{$_POST['valeParking']}',valeParkingRate='{$_POST['valeParkingRate']}',complementaryParking='{$_POST['complementaryParking']}',conciergeService='{$_POST['conciergeService']}',petFriendly='{$_POST['petFriendly']}',outdoorPool='{$_POST['outdoorPool']}',indoorPool='{$_POST['indoorPool']}',fitnessCenter='{$_POST['fitnessCenter']}',sauna='{$_POST['sauna']}',spaServices='{$_POST['spaServices']}',airportShuttle='{$_POST['airportShuttle']}',rooftop='{$_POST['rooftop']}',dryCleaning='{$_POST['dryCleaning']}',ironing='{$_POST['ironing']}',nonSmoking='{$_POST['nonSmoking']}',notes='{$_POST['notes']}',around='{$_POST['around']}',24hrRoomService='{$_POST['24hrRoomService']}',roomService='{$_POST['roomService']}',restaurantOnsite='{$_POST['restaurantOnsite']}',barOnsite='{$_POST['barOnsite']}',extraGuestPolicy='{$_POST['extraGuestPolicy']}',flatScreenTV='{$_POST['flatScreenTV']}',satelliteTV='{$_POST['satelliteTV']}',miniBar='{$_POST['miniBar']}',hotBeverages='{$_POST['hotBeverages']}',kettle='{$_POST['kettle']}',electronicSafe='{$_POST['electronicSafe']}',airConditioning='{$_POST['airConditioning']}',hairDrier='{$_POST['hairDrier']}',workingDesk='{$_POST['workingDesk']}',childrenPolicy='{$_POST['childrenPolicy']}',timezone='{$_POST['timezone']}',category='{$_POST['category']}',hairDrier='{$_POST['hairDrier']}',latlong='{$_POST['latlong']}' where hotelId={$hotelId} ";
 $result=mysqli_query($db,$sql) or mysqli_error($db);
 
 if($result)
@@ -20,7 +28,7 @@ if($result)
 }
 else
 {
-	echo "failure";
+	echo "failure".mysqli_error($db);;
 }
 //**** priority setting
 
