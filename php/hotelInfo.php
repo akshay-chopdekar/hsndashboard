@@ -65,7 +65,7 @@ if(!isset($_SESSION[ 'userLogged']))
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-3 navColor" style="width:260px;padding-left: 0px;">
+      <div id="nav" class="col-xs-3 navColor" style="width:260px;padding-left: 0px;">
         <div class="block">
           <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
@@ -82,12 +82,13 @@ if(!isset($_SESSION[ 'userLogged']))
            </li>
             <li><a href="payment.php">Payment</a>
           </li>
+            <li><a href="useradd.php">Add User</a>
+          </li>
          </ul>
       </div>
       <div class="col-xs-9">
         <strong>Dashboard</strong>
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
-
         <div class="form-inline">
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
@@ -534,9 +535,41 @@ if(!isset($_SESSION[ 'userLogged']))
   <script src="../packages/DataTables/js/dataTables.bootstrap.js"></script>
   <script src="../packages/DataTables/js/datatables.responsive.js"></script>
   <script src="../packages/DataTables/js/input.js"></script>
+
+  
+
   <script>
+  function translateText(response) {
+    document.body.innerHTML = response.data.translations[0].translatedText;
+  }
+
   'use strict';
   $(document).ready(function() {
+
+      var sourceLan, targetLang;
+      $("body").on("click",".langChange",function(event) {
+        if ($(this).val() == 'Turkish') {
+          
+          sourceLan = "en";
+          targetLang = "tr";
+        } else {
+          
+          sourceLan = "tr";
+          targetLang = "en";
+        }
+        var sourceText = escape(document.body.innerHTML);
+        $.ajax({
+          url: 'https://www.googleapis.com/language/translate/v2?key=AIzaSyDnlr2pbGEfUbpEH669KAuD9P0Sjq5ptS4&source=' + sourceLan + '&target=' + targetLang + '&callback=translateText&q=' + sourceText,
+          type: "get",
+          dataType:"jsonp",
+          processing: false,
+          cache: false
+        }).done(function(response) {
+          console.log("translation completed!");
+        });
+      });
+
+
     var responsiveHelper = undefined;
     var breakpointDefinition = {
       tablet: 1024,

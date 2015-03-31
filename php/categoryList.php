@@ -68,6 +68,8 @@ if(!isset($_SESSION[ 'userLogged']))
        </li>
         <li><a href="payment.php">Payment</a>
       </li>
+        <li><a href="useradd.php">Add User</a>
+      </li>
      </ul>
       </div>
       <div class="col-xs-9">
@@ -189,8 +191,13 @@ if(!isset($_SESSION[ 'userLogged']))
        /*Get userId for blocking user*/
       /*Get userId for blocking user*/
       $('#hotel').html(($(this).find('td').eq(0).text()));
+
+      category=$(this).find('td').eq(1).text();
+      // alert(category);
+
       $('#category').val(($(this).find('td').eq(1).text()));
-      // alert($(this).find('td').eq(1).text());
+      // alert("category is"+ $(this).find('td').eq(1).text());
+
        console.log('hotelName is:' + $(this).find('td').eq(0).text());
 
        $.ajax({
@@ -212,10 +219,13 @@ if(!isset($_SESSION[ 'userLogged']))
          }
          console.log(output);
          $("#category").append(output);
+         $("#category").val(category);
+
        })
        .fail(function() {
          console.log("error");
        });
+
        
     });
 

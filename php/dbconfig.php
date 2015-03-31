@@ -1,7 +1,7 @@
 <?php
-$username = "helixtech01";
+$username = "admin";
 $password = "sysadmin";
-$hostname = "166.62.18.107"; 
+$hostname = "hsn-final.cc3ufhmfnitc.us-west-2.rds.amazonaws.com"; 
 $database = "hotelsamenight"; 
 //connection to the database
 

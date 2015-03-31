@@ -16,7 +16,7 @@ for($i=0;$i<sizeof($callrevIdI);$i++)
     $callhotelId=$callhotelIdI[$i];
     // echo $callrevId."---".$callstatId."<br/>";
 
-    $sql="update hotelreviews set status={$callstatId} where reviewId={$callrevId} and hotelId={$callhotelId}";
+    $sql="update userreview set status={$callstatId} where reviewId={$callrevId} and hotelId={$callhotelId}";
     $row=mysqli_query($db,$sql);
     if($row)
     {

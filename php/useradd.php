@@ -72,7 +72,7 @@
          </li>
          <li><a  href="categoryList.php">Category List</a>
          </li>
-         <li><a class="active" href="campaign.php">Campaign</a>
+         <li><a  href="campaign.php">Campaign</a>
          </li>
          <li><a href="userReview.php">User Reviews</a>
          </li>
@@ -80,7 +80,7 @@
          </li>
           <li><a href="payment.php">Payment</a>
         </li>
-          <li><a href="useradd.php">Add User</a>
+          <li><a class="active" href="useradd.php">Add User</a>
         </li>
        </ul>
       </div>
@@ -88,22 +88,20 @@
         <strong>Dashboard</strong>
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
 
-
-
         <div class="form-inline">
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th data-class="expand">Campaign Id</th>
-                <th>Campaign Type Id</th>
-                <th data-hide="phone">Description</th>
+                <th data-class="expand">User Id</th>
+                <th>Hotel Id</th>
+                <th>User Name</th>
               </tr>
             </thead>
             <!--tbody section is required-->
             <tbody></tbody>
           </table>
         </div>
-        <input type="button" value="Add Campaigh" id="addcampaign" class="btn btn-primary pull-left">
+        <input type="button" value="Add User" id="adduser" class="btn btn-primary pull-left">
       </div>
     </div>
     <!-- Modal -->
@@ -120,31 +118,29 @@
           <div class="modal-body">
             <form class="form-horizontal" role="form" id="myform1" enctype="multipart/form-data">
               <div class="form-group">
-                <label class="control-label col-sm-2" >Campaign name</label>
+                <label class="control-label col-sm-2" for="email">Campaign name</label>
                 <div class="col-sm-10">
                   <p id="cname1"></p>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-sm-2" >Campaign Tagline</label>
+                <label class="control-label col-sm-2" for="email">Campaign Tagline</label>
                 <div class="col-sm-10">
-                  <textarea type="text" name="tagline" id="tagline" cols="60"></textarea>
+                  <textarea type="text" name="cdes1" id="cdes1" cols="60"></textarea>
                 </div>
               </div>
 
-             <!--  <div class="form-group">
-               <label class="control-label col-sm-2" for="email">Background Image</label>
-               <input type="file" name="fileToUpload" id="fileToUpload">
-             </div>
-              -->
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Background Image</label>
+                <input type="file" name="fileToUpload" id="fileToUpload">
+              </div>
+
               <div class="control-label">
                 <p id="check">
                 </p>
               </div>
 
-              
-            
           </div>
           <div class="modal-footer">
             <div class="form-group">
@@ -171,46 +167,56 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
             </button>
             <h4 class="modal-title" id="myModalLabel">
-                         Add campaign
+                         Add User
                       </h4>
           </div>
           <div class="modal-body">
 
             <form class="form-horizontal" role="form" id="myform2" enctype="multipart/form-data">
               <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Campaign name</label>
-                <div class="col-sm-10">
-                  <input type="text" name="cname2" id="cname2"></input>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Campaign description</label>
-                <div class="col-sm-10">
-                  <textarea type="text" name="cdes2" id="cdes2" cols="60"></textarea>
-                </div>
-              </div>
-                
-              <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Hotel list</label>
-                <div class="col-sm-5">
-                  <select name="hotels" id="hotels" class="form-control" multiple="multiple">
+                <label class="control-label col-sm-2" >Hotel Id</label>
+                <div class="col-sm-3">
+                  <select name="hotels" id="hotelid" class="form-control" >
                   </select>
                 </div>
               </div>
 
+               <div class="form-group">
+                 <label class="control-label col-sm-2" >First Name</label>
+                 <div class="col-sm-5">
+                    <input type="text" id="fname" class="form-control">
+                 </div>
+               </div>
+
               <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Background Image</label>
-                <input type="file" name="fileToUpload" id="fileToUpload">
+                <label class="control-label col-sm-2" >Last Name</label>
+                <div class="col-sm-5">
+                 <input type="text" id="lname" class="form-control">
+                  </div>
               </div>
 
-
-              <!-- <div class="control-label">
-                <label class="control-label col-sm-2" for="email">Background Image</label>
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <label class="control-label col-sm-2">images</label>
+              <div class="form-group">
+                <label class="control-label col-sm-2" >User Name</label>
+                <div class="col-sm-5">
+                  <input type="text" id="username" class="form-control">
+                </div>
               </div>
-               -->
+                
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Password</label>
+                <div class="col-sm-5">
+                   <input type="password" id="password" class="form-control">
+                </div>
+              </div>
+    
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="email">Email</label>
+                  <div class="col-sm-5">
+                   <input type="text" id="email" class="form-control">
+                 </div>
+                </div>
+
+
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input id="submit" type="submit" class="btn btn-default" name="submit" value="submit">
@@ -230,7 +236,6 @@
 
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/bootstrap-multiselect.js"></script>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--   <script src="../js/jquery.min.js"></script>
@@ -259,7 +264,7 @@
       serverSide: true,
       pagingType: "input",
       autoWidth: false,
-      ajax: 'scripts/server_processingforReporting.php',
+      ajax: 'scripts/server_processingforUser.php',
       preDrawCallback: function() {
         // Initialize the responsive datatables helper once.
         if (!responsiveHelper) {
@@ -278,11 +283,13 @@
 
   //To add entry into table
   $(document).ready(function() {
-    var camId,op="",stat,tagline;
+    var camId,op="",stat;
     var table = $('#example').DataTable();
 
     // $('#hotels').multiselect();
-    $('#example tbody').on('click', 'tr', function() {
+    
+   
+    /*$('#example tbody').on('click', 'tr', function() {
       $('#myModal').modal();
       if ($(this).hasClass('success')) {
         $(this).removeClass('success');
@@ -290,10 +297,9 @@
         table.$('tr.success').removeClass('success');
         $(this).addClass('success');
       }
-      camId = $(this).find('td').eq(0).text(); /*Get userId for blocking user*/
-
+      camId = $(this).find('td').eq(0).text(); 
       $('#cname1').html(($(this).find('td').eq(0).text()));
-      // $("#cdes1").html(($(this).find('td').eq(2).text()));
+      $("#cdes1").html(($(this).find('td').eq(2).text()))
 
         $( '#myform1' ).each(function(){
             this.reset();
@@ -305,33 +311,32 @@
 
     $('form#myform1').on('submit', function(event) {
       event.preventDefault();
-      var data = new FormData($(this)[0]);
-      /* Act on the event */
-      // alert('hi'+camId);
+      var da
+      ta = new FormData($(this)[0]);
+   
+      alert('hi'+camId);
       stat=$('input[type="radio"]:checked').val();
-      tagline=$("#tagline").val();
 
       data.append('stat',stat);
-      data.append('promotionTypeId',camId);
-      data.append('tagline',tagline);
+      data.append('promotionId',camId);
 
     $.ajax({
-        url: "scripts/addpromocode.php", //previous was update campaign
-        // async: false,
+        url: "scripts/updatecampaign.php",
+        async: false,
         data: data,
         type: "POST",
-        // dataType: "json",
-         // cache: false,
+        dataType: "json",
+         cache: false,
         processData: false,
         contentType: false,
       })
       .done(function(data) {
-        //alert(data.response);
+        alert(data.response);
          console.log("success");
         $("#example").DataTable().draw();
       })
       .fail(function() {
-        //alert(data.response);
+        alert(data.response);
          console.log("error");
       });
     $('#myModal').modal('hide');
@@ -341,9 +346,9 @@
 
     $('#myModal').on('hidden.bs.modal', function(e) {
       table.$('tr.success').removeClass('success');
-    });
+    });*/
 
-    $('#addcampaign').on('click', function(event) {
+    $('#adduser').on('click', function(event) {
       event.preventDefault();
       /* Act on the event */
       // alert('hi');
@@ -353,7 +358,6 @@
         });
 
       $('#myModal1').modal();
-
       $.ajax({
           url: 'scripts/gethotelids.php',
           type: 'GET',
@@ -362,57 +366,53 @@
         .done(function(data) {
           console.log("success");
           console.log(data['hotels'][0]);
-
-          // console.log(data.priority);
-          
           var output = "";
-          $("#hotels").empty();
+          $("#hotelid").empty();
           var hotelid = "",hotelname="";
           for (var i = 0; i < data['hotels'].length; i++) {
-            // console.log(data['imageUrl'][i]['imageUrl']);
-            
-            // $("#image").append('<img src="data["imageUrl"][i]["imageUrl"]" alt="data["imageUrl"][i]["imageUrl"]" />');
-            hotelid = data['hotels'][i]['hotelId'];
-            hotelname = data['hotels'][i]['hotelName'];
 
-            console.log("image is:" + hotelid+"hotelname:"+hotelname);
-            output += "<option value="+hotelid+">"+hotelname+"</option>";
-            
+            hotelid = data['hotels'][i]['hotelId'];
+            output += "<option value="+hotelid+">"+hotelid+"</option>";
           };
           console.log(output);
-          $("#hotels").append(output);
-          $('#hotels').multiselect();
-          $('#hotels').multiselect('refresh');
+          $("#hotelid").append(output);
+
         })
         .fail(function() {
           console.log("error");
         });
-
-      
     });
 
   $('form#myform2').on('submit', function(event) {
     event.preventDefault();
     /* Act on the event */
-    var promname,promdes,hotels;
-    promname=$("#cname2").val();
-    promdes=$("#cdes2").val();
-    hotels=$("#hotels").val();
-    console.log("promo name is:"+promname+"promo description:"+promdes);
+    var fname,lname,email,username,password,hotelId;
+    fname=$("#fname").val();
+    lname=$("#lname").val();
+    hotelId=$("#hotelid").val();
+    email=$("#email").val();
+    password=$("#password").val();
+    username=$("#username").val();
+    alert(username);
+
+    console.log("fname name is:"+fname+"promo description:"+lname+"hotel id is "+hotelId);
     // console.log(hotels.length);
 
 // $("#hotels").attr('attribute', 'value');
     var data = new FormData($(this)[0]);
 
-    data.append('promoName',promname);
-    data.append('description',promdes);
-    data.append('hotels',hotels);
+    data.append('fname',fname);
+    data.append('lname',lname);
+    data.append('hotelId',hotelId);
+    data.append('email',email);
+    data.append('password',password);
+    data.append('username',username);
     
     $.ajax({
-      url: 'scripts/addpromocode.php',
+      url: 'scripts/adduser.php',
       data: data,
             type: "POST",
-            // dataType: "json",
+            dataType: "json",
              // cache: false,
             processData: false,
             contentType: false,
@@ -421,11 +421,11 @@
       console.log("success");
       $('#myModal1').modal('hide');
       $("#example").DataTable().draw();
-
     })
     .fail(function() {
       console.log("error");
       $('#myModal1').modal('hide');
+      $("#example").DataTable().draw();
     });
     
   });

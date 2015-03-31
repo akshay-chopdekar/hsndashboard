@@ -19,18 +19,19 @@
  */
 
 // DB table to use
-$table = 'hotel';
+$table = 'hotelusers';
 
 // Table's primary key
-$primaryKey = 'hotelId';
+$primaryKey = 'userId';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array( 'db' => 'hotelId', 'dt' => 0 ),
-    array( 'db' => 'hotelName',  'dt' => 1 )
+	array( 'db' => 'userId', 'dt' => 0 ),
+	array( 'db' => 'hotelId',  'dt' => 1 ),
+	array( 'db' => 'userName',  'dt' => 2 )
 );
 
 // SQL server connection information
@@ -50,7 +51,7 @@ $sql_details = array(
 require( 'ssp.class.php' );
 
 echo json_encode(
-    SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns ),JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE
+	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns ),JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE
 );
 /*echo json_encode(SSP::findUsers( $_GET, $sql_details, $table, $primaryKey, $columns, " blocked = 0 AND userName <> 'admin' " ),JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);*/
 

@@ -36,12 +36,11 @@ $columns = array(
 
 // SQL server connection information
 $sql_details = array(
-	'user' => 'helixtech01',
+	'user' => 'admin',
 	'pass' => 'sysadmin',
 	'db'   => 'hotelsamenight',
-	'host' => '166.62.18.107'
+	'host' => 'hsn-final.cc3ufhmfnitc.us-west-2.rds.amazonaws.com'
 );
-
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

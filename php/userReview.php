@@ -86,6 +86,8 @@ if(!isset($_SESSION[ 'userLogged']))
              </li>
               <li><a href="payment.php">Payment</a>
             </li>
+              <li><a href="useradd.php">Add User</a>
+            </li>
            </ul>
       </div>
       <div class="col-xs-9">
@@ -331,7 +333,7 @@ if(!isset($_SESSION[ 'userLogged']))
       // alert("hi");
       // files.append("image", $('#filetoupload')[0].files[0]);
       // var files = $('#filetoupload').prop('files');
-      alert("hi");
+      // alert("hi");
       var row=$("#modaltable tbody tr");
       console.log("row is "+row.length);
       
@@ -346,7 +348,7 @@ if(!isset($_SESSION[ 'userLogged']))
 
                 // console.log("index is"+index+"value is="+value[i]+value[i+1]+value[i+2]);
                 
-                alert(value);
+                // alert(value);
                 var w=value.indexOf('w');
                 var W=value.indexOf('W');
                 var sub1=value.substring(1,w);

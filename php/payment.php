@@ -68,6 +68,8 @@ if(!isset($_SESSION[ 'userLogged']))
             </li>
              <li><a class="active" href="payment.php">Payment</a>
            </li>
+             <li><a href="useradd.php">Add User</a>
+           </li>
           </ul>
       </div>
       <div class="col-xs-9">

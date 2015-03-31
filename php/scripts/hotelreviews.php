@@ -4,7 +4,7 @@ require("../dbconfig.php");
 $response=array();
 $hotelId=$_GET['hotelId'];
 // echo "hotel id is ".$hotelId."<br/>";
-$query="select hotelId,reviewId,review,status from hotelreviews where hotelId=$hotelId";
+$query="select hotelId,reviewId,review,status from userreview where hotelId=$hotelId";
 $row=mysqli_query($db,$query);
 if($row)
 {
