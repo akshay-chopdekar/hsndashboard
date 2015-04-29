@@ -22,6 +22,21 @@ if(!isset($_SESSION[ 'userLogged']))
   <link rel="stylesheet" href="../packages/DataTables/css/input.css" />
 
   <link href="../css/main.css" rel="stylesheet">
+  
+  <meta name="google-translate-customization" content="a4ab8ee26d0a3df4-93d4d732f591be4b-g4ca1c1bb516de0ac-e"></meta>
+
+  <script type="text/javascript">
+   function googleTranslateElementInit() {
+     new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+   }
+   </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+       
+  <style type="text/css">iframe.goog-te-banner-frame{ display: none !important;}</style>
+  <style type="text/css">body {position: static !important; top:0px !important;}</style>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,13 +93,15 @@ if(!isset($_SESSION[ 'userLogged']))
              </li>
              <li><a  href="categoryList.php">Category List</a>
              </li>
-             <li><a href="campaign.php">Campaign</a>
+             <li><a href="campaign.php">Promotion Type</a>
+             </li>
+             <li><a href="promotion.php">Promotion</a>
              </li>
              <li><a class="active" href="userReview.php">User Reviews</a>
              </li>
              <li><a href="promoCode.php">Promo Code</a>
              </li>
-              <li><a href="payment.php">Payment</a>
+              <li><a href="payment.php">Confirm Hotel & Payment</a>
             </li>
               <li><a href="useradd.php">Add User</a>
             </li>
@@ -93,7 +110,7 @@ if(!isset($_SESSION[ 'userLogged']))
       <div class="col-xs-9">
         <strong>Dashboard</strong>
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
-
+        <div id="google_translate_element"></div>
         <div class="form-inline">
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>

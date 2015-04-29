@@ -9,7 +9,7 @@ if(!empty($_POST['password']))   //checking the 'user' name which is from Sign-I
 
 		if(!strcmp($_POST['password'],'admin')){
 	  	$_SESSION['userLogged'] = 1;
-	  	header("location: hotelInfo.php");
+	  	header("location: hotelInfon.php");
 	  }
   	else
 	  {

@@ -17,10 +17,31 @@ if(!isset($_SESSION[ 'userLogged']))
   <link href="../css/bootstrap.css" rel="stylesheet">
   <!-- DataTables -->
   <link rel="stylesheet" href="../packages/DataTables/css/dataTables.bootstrap.css" />
+  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700">
   <link rel="stylesheet" href="../packages/DataTables/css/datatables.responsive.css" />
   <link rel="stylesheet" href="../packages/DataTables/css/input.css" />
-
+  <link rel="stylesheet" href="../css/docs.min.css">
   <link href="../css/main.css" rel="stylesheet">
+
+
+  <meta name="google-translate-customization" content="a4ab8ee26d0a3df4-93d4d732f591be4b-g4ca1c1bb516de0ac-e"></meta>
+
+  <script type="text/javascript">
+   function googleTranslateElementInit() {
+     new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+   }
+   </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+       
+  <style type="text/css">iframe.goog-te-banner-frame{ display: none !important;}
+  .goog-te-gadget-simple{
+    background-color:#D1DB2C;
+    float: right;
+  }
+  </style>
+  <style type="text/css">body {position: static !important; top:0px !important;}</style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,9 +75,44 @@ if(!isset($_SESSION[ 'userLogged']))
   input.form-control{
     margin-top:7px;
   }
-  @media screen and (min-width:768px){
+  input.zeroOneWidth{
+   max-width: 100px; 
+  }
+  
+  label.labelAlign{
+    margin-top:0px;
+  }
+  input.oneLine{
+    margin-top:0px;
+  }
+  input#submit{
+    max-width:180px;
+    width:100%;
+    font-size:14px;
+    color: #fff;
+      background-color: #337ab7;
+      border-color: #2e6da4;
+  }
+  input#delete{
+    max-width:180px;
+    width:100%;
+    font-size:14px;
+    color:#fff;
+    background-color:#f1695b;
+  }
+  ul#image{
+    margin:auto;
+    display:block;
+  }
+  input[type="file"] {
+  display: block;
+  margin: 15px 211px 10px 96px;
+  }
+  @media only screen and (min-width:768px){
     .form-horizontal .control-label{
+      font-family:"Montserrat";
       font-size:13px;
+      text-align:left;
     }
   }
   </style>
@@ -65,7 +121,7 @@ if(!isset($_SESSION[ 'userLogged']))
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div id="nav" class="col-xs-3 navColor" style="width:260px;padding-left: 0px;">
+      <div class="col-xs-3 navColor" style="width:260px;padding-left: 0px;">
         <div class="block">
           <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
@@ -74,31 +130,35 @@ if(!isset($_SESSION[ 'userLogged']))
            </li>
            <li><a  href="categoryList.php">Category List</a>
            </li>
-           <li><a href="campaign.php">Campaign</a>
+           <li><a href="campaign.php">Promotion Type</a>
+           </li>
+           <li><a  href="promotion.php">Promotion</a>
            </li>
            <li><a href="userReview.php">User Reviews</a>
            </li>
            <li><a href="promoCode.php">Promo Code</a>
            </li>
-            <li><a href="payment.php">Payment</a>
+            <li><a href="payment.php">Confirm Hotel & Payment</a>
           </li>
-            <li><a href="useradd.php">Add User</a>
+          <li><a href="useradd.php">Add User</a>
           </li>
          </ul>
       </div>
+
       <div class="col-xs-9">
         <strong>Dashboard</strong>
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
+          <div id="google_translate_element" ></div>
         <div class="form-inline">
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th data-class="expand">Hotel ID</th>
-                <th>Hotel Name</th>
+                <th data-class="expand">Promotion ID</th>
+                <th>Promotion Name</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th>Lat</th>
-                <th>Long</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
               </tr>
             </thead>
             <!--tbody section is required-->
@@ -122,7 +182,8 @@ if(!isset($_SESSION[ 'userLogged']))
                        User Details
                     </h4>
           </div>
-          <div class="modal-body" style="width: 600px;height:461px;overflow:-moz-scrollbars-vertical;overflow-y:auto;">
+          <div class="modal-body scrollspy-example" data-spy="scroll" style="height:461px;overflow:-moz-scrollbars-vertical;overflow-y:auto;" id="scroll1">
+            <!-- <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example"> -->
             <form class="form-horizontal" role="form" id="myform" enctype="multipart/form-data">
               <div class="form-group" >
                 <label class="control-label col-sm-2" for="email">Hotel Id</label>
@@ -137,9 +198,9 @@ if(!isset($_SESSION[ 'userLogged']))
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" >Star</label>
+                <label class="control-label col-sm-2 labelAlign" >Star</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="star" id="star">
+                  <input class="form-control oneLine" type="text" name="star" id="star">
                 </div>
               </div>
               <div class="form-group">
@@ -149,359 +210,390 @@ if(!isset($_SESSION[ 'userLogged']))
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2">check In Time</label>
+              <label class="control-label col-sm-2">CheckIn Time</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="checkInTime" id="checkInTime">
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2">check Out Time</label>
+              <label class="control-label col-sm-2">CheckOut Time</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="checkOutTime" id="checkOutTime">
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2">breakfast</label>
+              <label class="control-label col-sm-2">Breakfast</label>
                 <div class="col-sm-10">
                 <textarea id="breakfast" cols="60" rows="3" class="form-control"></textarea>
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2">tradeName</label>
+              <label class="control-label col-sm-2">Trade Name</label>
                 <div class="col-sm-10">
                   <textarea id="tradeName" cols="60" rows="3" class="form-control"></textarea>
 
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2">address</label>
+              <label class="control-label col-sm-2">Address</label>
                 <div class="col-sm-10">
                    <textarea id="address" cols="60" rows="3" class="form-control"></textarea>
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2">postCode</label>
+              <label class="control-label col-sm-2 labelAlign oneLi">Post Code</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="postCode" id="postCode">
+                  <input class="form-control oneLine" type="text" name="postCode" id="postCode">
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >phoneNumber</label>
+              <label class="control-label col-sm-2 labelAlign" >Phone Number</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="phoneNumber" id="phoneNumber">
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >fax</label>
+              <label class="control-label col-sm-2 labelAlign" >Fax</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="fax" id="fax">
+                  <input class="form-control oneLine" type="text" name="fax" id="fax">
                 </div>
               </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >emailId</label>
+              <label class="control-label col-sm-2 labelAlign" >emailId</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="emailId" id="emailId">
+                  <input class="form-control oneLine" type="text" name="emailId" id="emailId">
                 </div>
               </div>   <div class="form-group">
-              <label class="control-label col-sm-2" >website</label>
+              <label class="control-label col-sm-2 labelAlign" >Website</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="website" id="website">
                 </div>
               </div> 
             <div class="form-group">
-              <label class="control-label col-sm-2" >salesPerson</label>
+              <label class="control-label col-sm-2 labelAlign" >Sales Person</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="salesPerson" id="salesPerson">
 
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >salesPersonContact</label>
+              <label class="control-label col-sm-2 labelAlign" >SalesPerson
+                Contact</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="salesPersonContact" id="salesPersonContact">
+                  <input class="form-control newLine" type="text" name="salesPersonContact" id="salesPersonContact">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >accountName</label>
+              <label class="control-label col-sm-2 labelAlign" >Account Name</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="accountName" id="accountName">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >accountContact</label>
+              <label class="control-label col-sm-2 labelAlign newLine" >Account
+                Contact</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="accountContact" id="accountContact">
+                  <input class="form-control newLine" type="text" name="accountContact" id="accountContact">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >wifi</label>
+              <label class="control-label col-sm-2 labelAlign">wifi</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="wifi" id="wifi">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="wifi" id="wifi">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >complementaryWifi</label>
+              <label class="control-label col-sm-2 labelAlign " style="font-size:12px">Complementry
+                Wifi</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="complementaryWifi" id="complementaryWifi">
+                  <input class="form-control newLine zeroOneWidth" type="text" name="complementaryWifi" id="complementaryWifi">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >selfParking</label>
+              <label class="control-label col-sm-2 labelAlign" >Self Parking</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="selfParking" id="selfParking">
+                  <input class="form-control zeroOneWidth" type="text" name="selfParking" id="selfParking">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >selfParkingRate</label>
+              <label class="control-label col-sm-2 labelAlign " >SelfParking
+                Rate</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="selfParkingRate" id="selfParkingRate">
+                  <input class="form-control newLine" type="text" name="selfParkingRate" id="selfParkingRate">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >valeParking</label>
+              <label class="control-label col-sm-2 labelAlign" >Vale Parking</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="valeParking" id="valeParking">
+                  <input class="form-control zeroOneWidth" type="text" name="valeParking" id="valeParking">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >valeParkingRate</label>
+              <label class="control-label col-sm-2 labelAlign " >ValeParking
+                Rate</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="valeParkingRate" id="valeParkingRate">
+                  <input class="form-control newLine zeroOneWidth" type="text" name="valeParkingRate" id="valeParkingRate">
                 </div>
             </div>
               <div class="form-group">
-              <label class="control-label col-sm-2" >complementaryParking</label>
+              <label class="control-label col-sm-2 labelAlign " style="font-size:12px">Complementry
+                Parking</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="complementaryParking" id="complementaryParking">
+                  <input class="form-control newLine" type="text" name="complementaryParking" id="complementaryParking">
                 </div>
             </div>
 
             <div class="form-group">
-              <label class="control-label col-sm-2" >conciergeService</label>
+              <label class="control-label col-sm-2" >Concierge
+                Service</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="conciergeService" id="conciergeService">
+                  <input class="form-control newLine" type="text" name="conciergeService" id="conciergeService">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >petFriendly</label>
+              <label class="control-label col-sm-2 labelAlign" >Pet Friendly</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="petFriendly" id="petFriendly">
+                  <input class="form-control zeroOneWidth" type="text" name="petFriendly" id="petFriendly">
                 </div>
             </div>
 
             <div class="form-group">
-              <label class="control-label col-sm-2" >outdoorPool</label>
+              <label class="control-label col-sm-2 labelAlign" >Outdoor Pool</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="outdoorPool" id="outdoorPool">
+                  <input class="form-control zeroOneWidth" type="text" name="outdoorPool" id="outdoorPool">
                 </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" >indoorPool</label>
+              <label class="control-label col-sm-2 labelAlign" >Indoor Pool</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="indoorPool" id="indoorPool">
+                  <input class="form-control zeroOneWidth" type="text" name="indoorPool" id="indoorPool">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >fitnessCenter</label>
+              <label class="control-label col-sm-2" >Fitness Center</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="fitnessCenter" id="fitnessCenter">
+                  <input class="form-control zeroOneWidth" type="text" name="fitnessCenter" id="fitnessCenter">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >sauna</label>
+              <label class="control-label col-sm-2 labelAlign" >Sauna</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="sauna" id="sauna">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="sauna" id="sauna">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >spaServices</label>
+              <label class="control-label col-sm-2 labelAlign" >Spa Services</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="spaServices" id="spaServices">
+                  <input class="form-control zeroOneWidth" type="text" name="spaServices" id="spaServices">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >airportShuttle</label>
+              <label class="control-label col-sm-2 labelAlign" >Airport Shuttle</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="airportShuttle" id="airportShuttle">
+                  <input class="form-control zeroOneWidth" type="text" name="airportShuttle" id="airportShuttle">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >rooftop</label>
+              <label class="control-label col-sm-2 labelAlign" >Roof Top</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="rooftop" id="rooftop">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="rooftop" id="rooftop">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >dryCleaning</label>
+              <label class="control-label col-sm-2 labelAlign" >Dry Cleaning</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="dryCleaning" id="dryCleaning">
+                  <input class="form-control zeroOneWidth" type="text" name="dryCleaning" id="dryCleaning">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >ironing</label>
+              <label class="control-label col-sm-2 labelAlign" >Ironing</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="ironing" id="ironing">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="ironing" id="ironing">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >nonSmoking</label>
+              <label class="control-label col-sm-2 labelAlign" >Non Smoking</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="nonSmoking" id="nonSmoking">
+                  <input class="form-control zeroOneWidth" type="text" name="nonSmoking" id="nonSmoking">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >notes</label>
+              <label class="control-label col-sm-2" >Notes</label>
                 <div class="col-sm-10">
-                  <textarea id="notes" cols="60" rows="3" class="form-control"></textarea>
+                  <textarea id="notes" cols="60" rows="3" class="form-control oneLine"></textarea>
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >foodBeverage</label>
+              <label class="control-label col-sm-2" >Food Beverage</label>
                 <div class="col-sm-10">
                   <textarea id="foodBeverage" cols="60" rows="3" class="form-control"></textarea>
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >around</label>
+              <label class="control-label col-sm-2" >Around</label>
                 <div class="col-sm-10">
-                  <textarea id="around" cols="60" rows="3" class="form-control"></textarea>
+                  <textarea id="around" cols="60" rows="3" class="form-control oneLine"></textarea>
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >24hrRoomService</label>
+ <!-- here-->             <label class="control-label col-sm-2 labelAlign" >24hrRoom
+ Service</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="24hrRoomService" id="24hrRoomService">
+                  <input class="form-control newLine" type="text" name="roomServiceHr24" id="roomServiceHr24">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >roomService</label>
+              <label class="control-label col-sm-2 labelAlign" >Room Service</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="roomService" id="roomService">
+                  <input class="form-control zeroOneWidth" type="text" name="roomService" id="roomService">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >restaurantOnsite</label>
+              <label class="control-label col-sm-2 labelAlign" >Restaurant
+                Onsite</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="restaurantOnsite" id="restaurantOnsite">
+                  <input class="form-control newLine zeroOneWidth" type="text" name="restaurantOnsite" id="restaurantOnsite">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >barOnsite</label>
+              <label class="control-label col-sm-2 labelAlign" >BAR Onsite</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="barOnsite" id="barOnsite">
+                  <input class="form-control zeroOneWidth" type="text" name="barOnsite" id="barOnsite">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >extraGuestPolicy</label>
+              <label class="control-label col-sm-2 labelAlign" >ExtraGuest
+                Policy</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="extraGuestPolicy" id="extraGuestPolicy">
+                  <input class="form-control newLine " type="text" name="extraGuestPolicy" id="extraGuestPolicy">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >flatScreenTV</label>
+              <label class="control-label col-sm-2 labelAlign" >FlatScreen TV</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="flatScreenTV" id="flatScreenTV">
+                  <input class="form-control zeroOneWidth" type="text" name="flatScreenTV" id="flatScreenTV">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >satelliteTV</label>
+              <label class="control-label col-sm-2 labelAlign" >Satellite TV</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="satelliteTV" id="satelliteTV">
+                  <input class="form-control zeroOneWidth" type="text" name="satelliteTV" id="satelliteTV">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >miniBar</label>
+              <label class="control-label col-sm-2 labelAlign" >Mini Bar</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="miniBar" id="miniBar">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="miniBar" id="miniBar">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >hotBeverages</label>
+              <label class="control-label col-sm-2 labelAlign" >Hot Beverages</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="hotBeverages" id="hotBeverages">
+                  <input class="form-control zeroOneWidth" type="text" name="hotBeverages" id="hotBeverages">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >kettle</label>
+              <label class="control-label col-sm-2 labelAlign" >Kettle</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="kettle" id="kettle">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="kettle" id="kettle">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >electronicSafe</label>
+              <label class="control-label col-sm-2 labelAlign" >Electronic Safe</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="electronicSafe" id="electronicSafe">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >airConditioning</label>
+              <label class="control-label col-sm-2 labelAlign" >Air Conditioning</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="airConditioning" id="airConditioning">
+                  <input class="form-control zeroOneWidth" type="text" name="airConditioning" id="airConditioning">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >hairDrier</label>
+              <label class="control-label col-sm-2 labelAlign" >Hair Drier</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="hairDrier" id="hairDrier">
+                  <input class="form-control oneLine zeroOneWidth" type="text" name="hairDrier" id="hairDrier">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >workingDesk</label>
+              <label class="control-label col-sm-2 labelAlign" >Working Desk</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="workingDesk" id="workingDesk">
+                  <input class="form-control zeroOneWidth" type="text" name="workingDesk" id="workingDesk">
                 </div>
             </div>
                <div class="form-group">
-              <label class="control-label col-sm-2" >childrenPolicy</label>
+              <label class="control-label col-sm-2 labelAlign" >Children Policy</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="text" name="childrenPolicy" id="childrenPolicy">
                 </div>
             </div>
                
                <div class="form-group">
-              <label class="control-label col-sm-2" >category</label>
+              <label class="control-label col-sm-2 labelAlign" >Category</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="category" id="category">
+                  <input class="form-control oneLine" type="text" name="category" id="category">
                 </div>
             </div>
-               <div class="form-group">
-              <label class="control-label col-sm-2" >lat long</label>
+               <!-- div class="form-group">
+                and here             <label class="control-label col-sm-2 labelAlign" >Lat Long</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="text" name="latlong" id="latlong">
+                  <input class="form-control oneLine" type="text" name="latlong" id="latlong">
                 </div>
-            </div>
+                           </div> -->
 
               <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Time Zone</label>
+                <label class="control-label col-sm-2">City</label>
                 <div class="col-sm-10">
-                  <select name="timezone" id="timezone" class="form-control">
-                    <option value="Delhi">Delhi</option>
-                    <option value="turkey">turkey</option>
-                    <option value="donkey">donkey</option>
-                    <option value="chinmay">chinmay</option>
-                    <option value="EET">EET</option>
-                    <option value="EST">EST</option>
-                    <option value="DST">DST</option>
+                  <select name="city" id="city" class="form-control">
                   </select>
                 </div>
               </div>
-              <div class="control-label">
-                <label class="control-label col-sm-2">description</label>
-                <textarea id="description" cols="60" class="form-control"></textarea>
+
+              <div class="form-group">
+                <label class="control-label col-sm-2">Zones</label>
+                <div class="col-sm-10">
+                  <select name="zones" id="zones" class="form-control">
+                  </select>
+                </div>
               </div>
 
               <div class="form-group">
+                <label class="control-label col-sm-2">Disctict</label>
+                <div class="col-sm-10">
+                  <input type="text" name="district" id="district">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                  <label class="control-label col-sm-2">Description</label>
+                    <div class="col-sm-10">
+                      <textarea id="description" cols="60" rows="3" class="form-control"></textarea>
+                    </div>
+              </div>
+
+              <!-- <div class="form-group">
                 <label class="control-label col-sm-2" for="email">category</label>
                 <div class="col-sm-10">
                   <p id="category"></p>
                 </div>
-              </div>
+              </div> -->
 
               <div class="control-label">
-                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" value="">
-                <label class="control-label col-sm-2">images</label>
+                <label class="control-label col-sm-2">Upload Image</label>
+                <input type="file" name="fileToUpload" id="fileToUpload" value="" style="margin-top:7px">
+                <label for="exampleText" class="control-label" style="margin-top:14px">Select image to set priority</label>
+                <div class="clear-fix"></div>
+                <br><br>
                 <!-- <p id="image"></p> -->
-                <ul id="image" style="width: 400px;height: 200px;overflow:-moz-scrollbars-vertical;overflow-y:auto;"></ul>
+                <ul id="image" class="list-inline" style="width: 400px;height: 200px;overflow:-moz-scrollbars-vertical;overflow-y:auto;"></ul>
+
+                  <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <input class="form-control" id="delete" type="button" class="btn btn-default" name="delete" value="delete Image">
+                  </div>
+                </div>
               </div>
             </div>
                 <div class="modal-footer">
@@ -510,11 +602,11 @@ if(!isset($_SESSION[ 'userLogged']))
                   <input class="form-control" id="submit" type="submit" class="btn btn-default" name="submit" value="submit">
                 </div>
               </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input class="form-control" id="delete" type="button" class="btn btn-default" name="delete" value="delete">
                 </div>
-              </div>
+                              </div> -->
                 </div>
             </form>
           
@@ -535,41 +627,9 @@ if(!isset($_SESSION[ 'userLogged']))
   <script src="../packages/DataTables/js/dataTables.bootstrap.js"></script>
   <script src="../packages/DataTables/js/datatables.responsive.js"></script>
   <script src="../packages/DataTables/js/input.js"></script>
-
-  
-
   <script>
-  function translateText(response) {
-    document.body.innerHTML = response.data.translations[0].translatedText;
-  }
-
   'use strict';
   $(document).ready(function() {
-
-      var sourceLan, targetLang;
-      $("body").on("click",".langChange",function(event) {
-        if ($(this).val() == 'Turkish') {
-          
-          sourceLan = "en";
-          targetLang = "tr";
-        } else {
-          
-          sourceLan = "tr";
-          targetLang = "en";
-        }
-        var sourceText = escape(document.body.innerHTML);
-        $.ajax({
-          url: 'https://www.googleapis.com/language/translate/v2?key=AIzaSyDnlr2pbGEfUbpEH669KAuD9P0Sjq5ptS4&source=' + sourceLan + '&target=' + targetLang + '&callback=translateText&q=' + sourceText,
-          type: "get",
-          dataType:"jsonp",
-          processing: false,
-          cache: false
-        }).done(function(response) {
-          console.log("translation completed!");
-        });
-      });
-
-
     var responsiveHelper = undefined;
     var breakpointDefinition = {
       tablet: 1024,
@@ -606,20 +666,24 @@ if(!isset($_SESSION[ 'userLogged']))
   });
 
   $(document).ready(function() {
-    var hotelId,timezone,description,address,url="",breakfast,tradeName,notes,foodBeverage,around;
+    var hotelId,timezone,description,address,url="",breakfast,tradeName,notes,foodBeverage,around,city="",zone="", output2="";
     var files = new FormData();
     var table = $('#example').DataTable();
 
     $('#example tbody').on('click', 'tr', function() {
       $('#myModal').modal();
+      // alert("hiii");
+
       if ($(this).hasClass('success')) {
         $(this).removeClass('success');
       } else {
         table.$('tr.success').removeClass('success');
         $(this).addClass('success');
       }
+
       hotelId = $(this).find('td').eq(0).text(); /*Get userId for blocking user*/
-     
+      // alert($("#scroll1").scrollTop());
+      
       $('#fileToUpload').val("");
      
      //ajax call to retrive hotel info
@@ -633,6 +697,7 @@ if(!isset($_SESSION[ 'userLogged']))
         },
       })
       .done(function(data) {
+        $("#scroll1").scrollTop(0);
         console.log("hotel info success");
         // console.log(data);
         console.log(data['info'][0]['timezone']);
@@ -678,7 +743,7 @@ if(!isset($_SESSION[ 'userLogged']))
         $("#notes").text(data['info'][0]['notes']);
         $("#foodBeverage").text(data['info'][0]['foodBeverage']);
         $("#around").text(data['info'][0]['around']);
-        $("#24hrRoomService").val(data['info'][0]['24hrRoomService']);
+        $("#roomServiceHr24").val(data['info'][0]['roomServiceHr24']);
         $("#roomService").val(data['info'][0]['roomService']);
         $("#restaurantOnsite").val(data['info'][0]['restaurantOnsite']);
         $("#barOnsite").val(data['info'][0]['barOnsite']);
@@ -693,20 +758,186 @@ if(!isset($_SESSION[ 'userLogged']))
         $("#workingDesk").val(data['info'][0]['workingDesk']);
         $("#hairDrier").val(data['info'][0]['hairDrier']);
         $("#childrenPolicy").val(data['info'][0]['childrenPolicy']);
-        $("#timezone").val(data['info'][0]['timezone']);
+        // $("#timezone").val(data['info'][0]['timezone']);
         $("#category").val(data['info'][0]['category']);
         $("#description").val(data['info'][0]['description']);
-        $("#latlong").val(data['info'][0]['latlong']);
+        // $("#latlong").val(data['info'][0]['latlong']);
+        $("#district").val(data['info'][0]['district']);
+        city=data['info'][0]['cityId'];
+        // alert(city);
+        // alert(data['info'][0]['zone']);
+        zone=data['info'][0]['zone'];
+        // $("#zones").val("<option value="+data['info'][0]['zone']+">"+data['info'][0]['zone']+"</option>");
+        // 
+        // 
+        // 
+        ///////////////////////////////
+        /////ajax call to retrive city and zones
+     
+     $.ajax({
+       url: 'scripts/getcity.php',
+       type: 'GET',
+       dataType: 'json',
+       // data: {param1: 'value1'},
+     })
+     .done(function(data) {
+       console.log("success");
+       console.log(data);
+       var output1="";
+
+       $("#city").empty();
+        $("#zones").empty();
+
+       for(var i=0;i<data['city'].length;i++)
+       {
+          output1+="<option value="+data['city'][i]['city']+" name="+data['city'][i]['cityId']+">"+data['city'][i]['city']+"</option>";  
+       }
+       // console.log(output1);
 
 
+// console.log(output2);
+       $("#city").append(output1);
+       $("#zones").append(output2);
+       // alert("ciry is o"+city);
+
+       //ajax call to retrive city name
+       $.ajax({
+         url: 'scripts/getcitybyid.php',
+         type: 'GET',
+         dataType: 'json',
+         data: {
+           city: city
+         },
+       })
+       .done(function(data) {
+         console.log("success getcitybyid");
+
+         // alert(data);
+         // $("#city").val("<option value="+data['info'][0]['city']+">"+data['info'][0]['city']+"</option>");
+         
+         // $("#city option:selected").text(data['info'][0]['city']);
+         $("#city").val(data['info'][0]['city']);
+         // alert(data['info'][0]);
+         // console.log(data);
+         console.log(data['info'][0]['city']);
+       })
+       .fail(function() {
+         console.log("error getcitybyid");
+       });
 
 
+       //ajax call to retrive zones
+       $.ajax({
+         url: 'scripts/getcity.php',
+         type: 'GET',
+         dataType: 'json',
+         data: {
+          cityId: city
+        },
+       })
+       .done(function(data) {
+         console.log("success get zones");
+         // console.log(data);
+         output2="";
+         for(var i=0;i<data['zones'].length;i++)
+         {
+          output2+="<option value="+data['zones'][i]['zone']+">"+data['zones'][i]['zone']+"</option>";
+         }
+
+         console.log(output2);
+         $("#zones").empty();
+         $("#zones").append(output2);
+
+          $("#zones option[value="+zone+"]").attr('selected', 'selected');
+
+       })
+       .fail(function() {
+         console.log("error get zones");
+       });
+       
+
+
+     })
+     .fail(function() {
+       console.log("error");
+     });
+      
+    //ajax call to retrive zones
+    
+   /* $.ajax({
+      url: 'scripts/getcity.php',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+       cityId: city
+     },
+    })
+    .done(function(data) {
+      console.log("success get zones");
+      // console.log(data);
+      var output3="";
+      for(var i=0;i<data['zones'].length;i++)
+      {
+       output3+="<option value="+data['zones'][i]['zone']+">"+data['zones'][i]['zone']+"</option>";
+      }
+
+      console.log(output3);
+      $("#zones").empty();
+      $("#zones").append(output3);
+      $("#zones option[value="+zone+"]").attr('selected', 'selected');
+
+
+    })
+    .fail(function() {
+      console.log("error get zones");
+    });
+    
+*/
 
       })
       .fail(function() {
         console.log("hotel info error");
       });
       
+
+      //on change of city
+      $("#city").on('change', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+        // alert("hi");
+        
+        alert($("#city option:selected").attr('name'));
+
+        $.ajax({
+          url: 'scripts/getcity.php',
+          type: 'GET',
+          dataType: 'json',
+          data: {
+            cityId: $("#city option:selected").attr('name')
+          },
+        })
+        .done(function(data) {
+          console.log("success zones 2nd");
+          console.log(data);
+
+          var output3="";
+          for(var i=0;i<data['zones'].length;i++)
+          {
+           output3+="<option value="+data['zones'][i]['zone']+">"+data['zones'][i]['zone']+"</option>";
+          }
+
+          console.log(output3);
+          $("#zones").empty();
+          $("#zones").append(output3);
+          // $("#zones option[value="+zone+"]").attr('selected', 'selected');
+
+        })
+        .fail(function() {
+          console.log("error zones 2nd");
+        });
+        
+        
+      });
      
 
       //ajax call to retrive hotel images link
@@ -723,6 +954,7 @@ if(!isset($_SESSION[ 'userLogged']))
           $("ul#image").empty();
           if(data['imageUrl']){
             console.log("success");
+            // console.log(data);
             console.log("hotel id is"+data['imageUrl'][0]['hotelId']);
                       // console.log(data.priority);
                       var output = "";
@@ -774,7 +1006,7 @@ $(".modal-body").on('click', 'ul#image li img', function (event) {
   $(this).attr('class', 'imageclass');
   url = $(this).attr('url');
   console.log(url);
-  alert("url of image is is"+url);
+  // alert("url of image is is"+url);
 });
 
 
@@ -848,10 +1080,12 @@ $("#delete").on('click', function(event) {
       data.append('notes',notes);
       data.append('foodBeverage',foodBeverage);
       data.append('around',around);
+      data.append('timezone',timezone);
+
 
 
       $.ajax({
-          url: "../php/blockuser.php",
+          url: "../php/savehotelinfo.php",
           // async: false,
           data: data,
           type: "POST",
@@ -863,6 +1097,7 @@ $("#delete").on('click', function(event) {
         .done(function(data) {
           //alert(data.response);
            console.log("success");
+           console.log(data);
           $("#example").DataTable().draw();
         })
         .fail(function() {

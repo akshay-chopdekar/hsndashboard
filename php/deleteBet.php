@@ -1,10 +1,10 @@
 <?php
 require_once("dbconfig.php");
 session_start();
-$category=$_POST['category'];
+$categoryId=$_POST['categoryId'];
 $hotelName=$_POST['hotelName'];
 echo $category."----".$hotelName;
-$sqlBets="update hotel set category='$category' where hotelName='$hotelName'";
+$sqlBets="update hotel set categoryId={$categoryId} where hotelId='$hotelName'";
 
 
 $resultBets=mysqli_query($db,$sqlBets);

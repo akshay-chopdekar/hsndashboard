@@ -46,6 +46,14 @@ $sql_details = array(
 	'host' => 'hsn-final.cc3ufhmfnitc.us-west-2.rds.amazonaws.com'
 );
 
+// $sql_details = array(
+// 	'user' => 'root',
+// 	'pass' => '',
+// 	'db'   => 'hotelsamenight',
+// 	'host' => 'localhost'
+// );
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.

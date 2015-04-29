@@ -3,7 +3,7 @@ require("../dbconfig.php");
 // print_r($_GET);
 $response=array();
 $hotelId=$_GET['hotelId'];
-$query="select hotelId,imageUrl,priority from hotelimages where hotelId=$hotelId";
+$query="select imageId,hotelId,imageUrl,priority from hotelimages where hotelId=$hotelId";
 $row=mysqli_query($db,$query);
 $images = array();
 if(isset($row))
@@ -19,24 +19,62 @@ if(isset($row))
 	}
 	if(!empty($images))
 	{
-	$response['imageUrl']=$images;
-	$response['status']=true;
+		$response['status1']=true;
+		$response['imageUrl']=$images;
+	
 	}
 	else
 	{
-		$response['status']=false;
+		$response['status1']=false;
 	}
 }
 else
 {
 	// echo "failure";
-	$response['status']=false;
+	$response['statusimagequery']=false;
 }
 
+//get priority of image
+$query11="select imageId from hotelimages where hotelId=$hotelId and priority=1";
+$row11=mysqli_query($db,$query11);
+$priority = array();
+
+
+if(isset($row11))
+{
+	// echo "success";
+	$roww = mysqli_fetch_assoc($row11);
+	
+	// var_dump($roww);
+	if(!empty($images))
+	{
+		if($roww['imageId'])
+			{
+				$response['priority']=$roww;
+			}
+			else
+			{
+				$roww['imageId']='';
+				$response['priority']=$roww;
+			}
+	$response['status2']=true;
+	}
+	else
+	{
+
+		$response['status2']=false;
+	}
+}
+else
+{
+	echo "failure";
+	$response['statuspriority']=false;
+}
 
 // var_dump($images);
 
 
 // print_r($response);
 echo json_encode($response);
+
 ?>

@@ -9,9 +9,10 @@ if(isset($_POST['hotelId']))
 	$email=$_POST['email'];
 	$password=md5($_POST['password']);
 
-	// echo "username is".$userName;
+	echo "username is".$userName."hotelid is".$hotelId;
 
-	$sql="insert into hotelusers(hotelId,username,password,userType,firstName,lastName,email) values({$hotelId},'{$userName}','{$password}','admin','{$firstName}','{$lastName}','{$email}')";
+	$sql="insert into hotelusers (hotelId,userName,password,userType,firstName,lastName,email) values({$hotelId},'{$userName}','{$password}','admin','{$firstName}','{$lastName}','{$email}')";
+
 
 	if(mysqli_query($db,$sql))
 	{
@@ -19,7 +20,7 @@ if(isset($_POST['hotelId']))
 	}
 	else
 	{
-		echo json_encode('failure');
+		echo json_encode('failure'.mysqli_error($db));
 	}
 }
 

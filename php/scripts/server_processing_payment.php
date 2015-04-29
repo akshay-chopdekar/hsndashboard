@@ -30,7 +30,9 @@ $primaryKey = 'hotelId';
 // indexes
 $columns = array(
 	array( 'db' => 'hotelId', 'dt' => 0 ),
-	array( 'db' => 'hotelName',  'dt' => 1 )
+	array( 'db' => 'hotelName',  'dt' => 1 ),
+	array( 'db' => 'confirmed',  'dt' => 2 ),
+
 );
 
 // SQL server connection information
@@ -41,6 +43,14 @@ $sql_details = array(
 	'host' => 'hsn-final.cc3ufhmfnitc.us-west-2.rds.amazonaws.com'
 );
 
+
+/*$sql_details = array(
+	'user' => 'root',
+	'pass' => '',
+	'db'   => 'hotelsamenight',
+	'host' => 'localhost'
+);
+*/
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

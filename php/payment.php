@@ -22,6 +22,26 @@ if(!isset($_SESSION[ 'userLogged']))
 
   <link href="../css/main.css" rel="stylesheet">
 
+  <meta name="google-translate-customization" content="a4ab8ee26d0a3df4-93d4d732f591be4b-g4ca1c1bb516de0ac-e"></meta>
+
+  <script type="text/javascript">
+   function googleTranslateElementInit() {
+     new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+   }
+   </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+       
+  <style type="text/css">iframe.goog-te-banner-frame{ display: none !important;}
+  .goog-te-gadget-simple{
+    background-color:#D1DB2C;
+    float: right;
+  }
+  </style>
+  <style type="text/css">body {position: static !important; top:0px !important;}</style>
+
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -30,6 +50,9 @@ if(!isset($_SESSION[ 'userLogged']))
     <![endif]-->
 
   <style>
+  input{
+    margin-top: 10px;
+  }
   .title {
     font-size: larger;
     font-weight: bold;
@@ -45,6 +68,25 @@ if(!isset($_SESSION[ 'userLogged']))
    display: block;
    padding-top: 11px;
   }
+  p#hotelId{
+    margin-top:7px;
+  }
+  p#hotelName{
+    margin-top:7px;
+  }
+  input#profit{
+    margin-top:11px;
+    height:35px;
+    border-radius: 4px;
+    padding-left:10px;
+    margin-left: 15px;
+  }
+  input#update{
+    max-width:180px;
+    width:100%;
+    font-family:"Montserrat";
+    font-size:15px;
+  }
   </style>
 </head>
 
@@ -56,34 +98,41 @@ if(!isset($_SESSION[ 'userLogged']))
           <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
      <ul class="nav">
-            <li><a  href="hotelInfo.php">Hotel Info</a>
+            <li><a  href="hotelInfon.php">Hotel Info</a>
             </li>
-            <li><a  href="categoryList.php">Category List</a>
+            <li><a  href="categoryList11.php">Category List</a>
             </li>
-            <li><a href="campaign.php">Campaign</a>
+            <li><a href="campaign.php">Promotion Type</a>
             </li>
-            <li><a href="userReview.php">User Reviews</a>
+            <li><a  href="promotionn.php">Promotion</a>
+            </li>
+            <li><a href="userReview1.php">User Reviews</a>
             </li>
             <li><a href="promoCode.php">Promo Code</a>
             </li>
-             <li><a class="active" href="payment.php">Payment</a>
+             <li><a class="active" href="payment.php">Confirm Hotel & Payment</a>
            </li>
-             <li><a href="useradd.php">Add User</a>
+           <li><a href="useradd.php">Add User</a>
            </li>
+           <li><a  href="paymentinfo.php">Payment Information</a>
+           </li>
+           <li><a href="transactiondetails.php">Trasaction Details</a>
+            </li>
+            <li><a  href="creditcardinfo.php">Credit Card Info</a>
+             </li>
           </ul>
       </div>
       <div class="col-xs-9">
         <strong>Dashboard</strong>
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
-
-
-
+        <div id="google_translate_element"></div>
         <div class="form-inline">
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th data-class="expand">HOTEL ID</th>
                 <th>HOTEL NAME</th>
+                <th>Status</th>
               </tr>
             </thead>
             <!--tbody section is required-->
@@ -138,18 +187,47 @@ if(!isset($_SESSION[ 'userLogged']))
                </div>
              </div> -->
 
+            
+
              <div class="form-group">
-               <label class="control-label col-sm-2" for="email">Admin Profit</label>
-               <input type="text" name="profit" id="profit">
+               <label class="control-label col-sm-2" for="email">Same Day Profit %</label>
+               <input type="text"  name="sdprofit" id="sdprofit" class="d" maxlength="2" required>
              </div>
 
-               <!-- <div class="form-group">
-               <label class="control-label col-sm-2" >Final Price</label>
-               <div class="col-sm-10">
-                 <p id="finalprice"></p>
-               </div>
-                            </div>
-                -->
+             <div class="form-group">
+               <label class="control-label col-sm-2" for="email">Following Day Profit %</label>
+               <input type="text" name="fdprofit" id="fdprofit" maxlength="2" class="d" required>
+             </div>
+
+             <div class="form-group">
+               <label class="control-label col-sm-2" for="email">Tax and Fees</label>
+               <input type="text" name="taxandfees" id="taxandfees" class="d" pattern="(\d{2})([\.])(\d{2})" required>
+             </div>
+              
+              <div class="form-group">
+               <label class="control-label col-sm-2">Promotion Profit %</label>
+               <input type="text" name="PromotionProfit" id="PromotionProfit" class="d" maxlength="2" required>
+             </div>
+              
+
+              <div class="form-group">
+              <label class="control-label col-sm-2" >Current Status</label>
+              <div class="col-sm-10">
+                <p id="status"></p>
+              </div>
+
+              </div>
+
+              <div class="form-group" id="statusdisable">
+              <label class="control-label col-sm-2" >Change Status</label>
+              <div class="col-sm-10">
+                <select name="changestatus" id="changestatus">
+                  <option value="1">accept</option>
+                  <option value="0">reject</option>
+                </select>
+              </div>
+              </div>
+
 
          </div>
          <div class="modal-footer">
@@ -191,7 +269,7 @@ if(!isset($_SESSION[ 'userLogged']))
     tableElement.dataTable({
       processing: false,
       serverSide: true,
-      pagingType: "input",
+      // pagingType: "input",
       autoWidth: false,
       ajax: 'scripts/server_processing_payment.php',
       preDrawCallback: function() {
@@ -212,7 +290,7 @@ if(!isset($_SESSION[ 'userLogged']))
 
   //To add entry into table
   $(document).ready(function() {
-    var category,hotelId,output="",price;
+    var category,hotelId,output="",sdprofit,fdprofit,status,taxandfees,PromotionProfit;
     var table = $('#example').DataTable();
 
     $('#example tbody').on('click', 'tr', function() {
@@ -224,12 +302,13 @@ if(!isset($_SESSION[ 'userLogged']))
         $(this).addClass('success');
       }
 
+        
       hotelId = $(this).find('td').eq(0).text();
        /*Get userId for blocking user*/
       /*Get userId for blocking user*/
       $('#hotelId').html(($(this).find('td').eq(0).text()));
       $('#hotelName').html(($(this).find('td').eq(1).text()));
-      $("#profit").val('');
+      // $("#profit").val('');
       // alert(price);
       // alert($(this).find('td').eq(1).text());
        console.log('hotelName is:' + $(this).find('td').eq(0).text());
@@ -245,13 +324,52 @@ if(!isset($_SESSION[ 'userLogged']))
          .done(function(data) {
            console.log("success 1st");
            console.log(data);
-           $("#profit").val(data['profit']['profit']);
+           $("#sdprofit").val(data['profit']['profitSameDay']);
+           $("#fdprofit").val(data['profit']['profitFollowingDay']);
+           $("#taxandfees").val(data['profit']['taxandfees']);
+           $("#PromotionProfit").val(data['profit']['PromotionProfit']);
+
+
+           $("#update").hide();
+           if($("#sdprofit").val()>0 && $("#fdprofit").val()>0)
+           {
+             $("#update").show();
+           }
+
+           if(data['profit']['confirmed']==1)
+           {
+           $("#status").text("confirmed");
+           $("#statusdisable").hide();
+            $(".d").attr('disabled', true);
+           }
+           else
+           {
+            $("#status").text("not confirmed");
+            $("#statusdisable").show();
+            $(".d").attr('disabled', false);
+           }
          })
          .fail(function() {
            console.log("error 1st");
          });
+
+
        });
       
+      // $("#update").show();
+      $("#sdprofit,#fdprofit,#PromotionProfit").bind('keyup', function(event) {
+        /* Act on the event */
+        if($("#sdprofit").val()>0 && $("#fdprofit").val()>0 && $("#PromotionProfit").val()>0)
+        {
+          // alert("hi");
+          $("#update").show();
+        }
+        else
+        {
+          $("#update").hide();
+        }
+  
+      });
       
     
 
@@ -260,52 +378,40 @@ if(!isset($_SESSION[ 'userLogged']))
       table.$('tr.success').removeClass('success');
     })
 
-/*    $('#deletePost').click(function() {
-      category = $("#category option:selected").val();
-       console.log('category is:' + category);
-      $.ajax({
-          url: "../php/deleteBet.php",
-          // async: false,
-          data: {
-            category: category,
-            hotelName:hotelName
-          },
-          type: "POST",
-          // dataType: "json",
-        })
-        .done(function(data) {
-          //alert(data.response);
-          console.log('success');
-      $("#example").DataTable().draw();
-        })
-        .fail(function() {
-           console.log('fail');
-          //alert(data.response);
-        })
-      $('#myModal').modal('hide');
-    });*/
 
   $("form#myform1").on('submit', function(event) {
     event.preventDefault();
     /* Act on the event */
     // alert("hi");
-    price=$("#profit").val();
-    alert(price);
+    sdprofit=$("#sdprofit").val();
+    fdprofit=$("#fdprofit").val();
+    status=$("#changestatus").val();
+    taxandfees=$("#taxandfees").val();
+    PromotionProfit=$("#PromotionProfit").val();
+
+    // alert(price);
     $.ajax({
       url: 'scripts/setprofit.php',
       type: 'POST',
       dataType: 'json',
       data: {
         hotelId: hotelId,
-        profit:price
+        sdprofit:sdprofit,
+        fdprofit:fdprofit,
+        status:status,
+        taxandfees:taxandfees,
+        PromotionProfit:PromotionProfit
       },
     })
     .done(function(data) {
       console.log("success 2nd");
-      console.log("data is:"+data);
+      // console.log(data);
+      $('#myModal').modal('hide');
+      $("#example").DataTable().draw();
     })
     .fail(function() {
       console.log("error 2nd");
+      $('#myModal').modal('hide');
     });
   });
   

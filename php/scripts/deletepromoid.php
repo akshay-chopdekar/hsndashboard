@@ -1,8 +1,8 @@
 <?php
 require ('../dbconfig.php');
 $promoid=$_POST['id'];
-
-	$sql="delete from promocode where promoId={$promoid}";
+echo "promo id is".$promoid;
+	$sql="delete from promocode where code='{$promoid}'";
 
 	if($result=mysqli_query($db,$sql))
 	{

@@ -92,7 +92,7 @@ ul {
 }
 ul.nav li a{
   font-family: 'Montserrat-Regular';
-  font-size: 21px;
+  font-size: 18px;
   padding:20px;
   color:#353794;
 }
@@ -115,6 +115,7 @@ strong {
 .logoDashboardWidth{
   width:161px;
 }
+
 
 
 

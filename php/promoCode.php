@@ -23,6 +23,26 @@ if(!isset($_SESSION[ 'userLogged']))
 
   <link href="../css/main.css" rel="stylesheet">
 
+  <meta name="google-translate-customization" content="a4ab8ee26d0a3df4-93d4d732f591be4b-g4ca1c1bb516de0ac-e"></meta>
+
+  <script type="text/javascript">
+   function googleTranslateElementInit() {
+     new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,tr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+   }
+   </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+       
+  <style type="text/css">iframe.goog-te-banner-frame{ display: none !important;}
+  .goog-te-gadget-simple{
+    background-color:#D1DB2C;
+    float: right;
+  }
+  </style>
+  <style type="text/css">body {position: static !important; top:0px !important;}</style>
+
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -31,6 +51,9 @@ if(!isset($_SESSION[ 'userLogged']))
     <![endif]-->
 
   <style>
+  select#sel{
+    margin-top: 10px;
+  }
   .title {
     font-size: larger;
     font-weight: bold;
@@ -45,15 +68,40 @@ if(!isset($_SESSION[ 'userLogged']))
  input#promocode1{
   margin-top: 8px;
   height: 40px;
+  padding-left:10px;
+  border-radius: 4px;
  }
  input#associatedcredits1{
   margin-top: 7px;
   height: 40px;
+  padding-left:10px;
+  border-radius: 4px;
  }
  p#promoid1{
   margin-top:7px;
  }
- 
+ input#promocode{
+  margin-top: 11px;
+    height: 35px;
+    border-radius: 4px;
+ }
+ input#associatedcredits{
+  margin-top: 11px;
+  height: 35px;
+  border-radius: 4px;
+ }
+ input#submit1{
+  max-width:180px;
+  width:100%;
+  font-family:"Montserrat";
+  font-size:15px;
+ }
+ input#insert{
+  max-width: 180px;
+    width: 100%;
+    font-family: "Montserrat";
+    font-size: 15px;
+ }
  @media screen and (min-width:768px){
   .form-horizontal .control-label{
     text-align:left;
@@ -77,32 +125,40 @@ if(!isset($_SESSION[ 'userLogged']))
          <img class="center-block logo" src="../images/HSN_logo.png">
         </div>
         <ul class="nav">
-               <li><a  href="hotelInfo.php">Hotel Info</a>
+               <li><a  href="hotelInfon.php">Hotel Info</a>
                </li>
-               <li><a  href="categoryList.php">Category List</a>
+               <li><a  href="categoryList11.php">Category List</a>
                </li>
-               <li><a href="campaign.php">Campaign</a>
+               <li><a href="campaign.php">Promotion Type</a>
                </li>
-               <li><a  href="userReview.php">User Reviews</a>
+               <li><a  href="promotionn.php">Promotion</a>
+               </li>
+               <li><a  href="userReview1.php">User Reviews</a>
                </li>
                <li><a class="active" href="promoCode.php">Promo Code</a>
                </li>
-                <li><a href="payment.php">Payment</a>
+                <li><a href="payment.php">Confirm Hotel & Payment</a>
               </li>
-                <li><a href="useradd.php">Add User</a>
+              <li><a href="useradd.php">Add User</a>
               </li>
+              <li><a  href="paymentinfo.php">Payment Information</a>
+              </li>
+              <li><a href="transactiondetails.php">Trasaction Details</a>
+               </li>
+               <li><a  href="creditcardinfo.php">Credit Card Info</a>
+                </li>
              </ul>
       </div>
       <div class="col-xs-9">
         <strong>Dashboard</strong>
-        <br/>
         <a href="logout.php" class="btn btn-primary pull-right" style="z-index:100;margin-top:10px;">Logout</a>
+        <div id="google_translate_element"></div>
         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
           <thead>
             <tr>
-              <td>Promo ID</td>
-              <td>Promo code</td>
-              <td>associated credits</td>
+              <th>Promo ID</th>
+              <th>Promo code</th>
+              <th>associated credits</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -161,29 +217,29 @@ if(!isset($_SESSION[ 'userLogged']))
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
               </button>
               <h4 class="modal-title" id="myModalLabel">
-                             Review Details
+                             Add Promotion Code
                           </h4>
             </div>
             <div class="modal-body">
               <form class="form-horizontal" role="form" id="myform" enctype="multipart/form-data">
 
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="email">promo code</label>
+                  <label class="control-label col-sm-2" for="email">Promo Code</label>
                   <div class="col-sm-10">
-                    <input type="textbox" name="promo code" id="promocode">
+                    <input type="textbox" name="promo code" id="promocode" maxlength="10">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="email">associated credits</label>
+                  <label class="control-label col-sm-2" for="email">Associated Credits</label>
                   <div class="col-sm-10">
-                    <input type="textbox" name="associated credits" id="associatedcredits">
+                    <input type="textbox" name="associated credits" id="associatedcredits" maxlength="2">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <input id="insert" type="submit" class="btn btn-default" name="insert" value="insert">
+                    <input id="insert" type="submit" class="btn btn-default" name="insert" value="Insert">
                   </div>
                 </div>
             </div>
@@ -223,19 +279,19 @@ if(!isset($_SESSION[ 'userLogged']))
             <div class="form-group">
               <label class="control-label col-sm-2">Promo Code</label>
               <div class="col-sm-10">
-                <input type="textbox" name="promo code" id="promocode1">
+                <input type="textbox" name="promo code" id="promocode1" maxlength="10">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2">Associated Credits</label>
               <div class="col-sm-10">
-                <input type="textbox" name="associated credits" id="associatedcredits1">
+                <input type="textbox" name="associated credits" id="associatedcredits1" maxlength="2">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <input id="submit1" type="submit" class="btn btn-default" name="submit" value="update">
+                <input id="submit1" type="submit" class="btn btn-default" name="submit" value="Update">
               </div>
             </div>
 
@@ -268,7 +324,7 @@ if(!isset($_SESSION[ 'userLogged']))
           <form class="form-horizontal" role="form" id="myform2" enctype="multipart/form-data">
 
             <div class="form-group">
-              <label class="control-label col-sm-2">Promo Id</label>
+              <label class="control-label col-sm-2">Promo Code</label>
               <div class="col-sm-10">
                 <select id="sel"></select>
               </div>
@@ -317,7 +373,7 @@ if(!isset($_SESSION[ 'userLogged']))
 
       processing: false,
       serverSide: true,
-      pagingType: "input",
+      // pagingType: "input",
       autoWidth: false,
       ajax: 'scripts/server_processing_promo.php',
 
@@ -372,6 +428,82 @@ if(!isset($_SESSION[ 'userLogged']))
       $("form#myform1").find("#promocode1").val(promocode1);
       $("form#myform1").find("#associatedcredits1").val(associatedcredits1);
 
+    });
+
+    $("#insert").hide();
+    $("#promocode,#associatedcredits").bind('keyup', function(event) {
+      /* Act on the event */
+      
+      if($("#associatedcredits").val()>=0 && $("#promocode").val()!=0 && $("#associatedcredits").val()!="")
+      {
+        if($.isNumeric($("#promocode").val()))
+        {
+          $("#insert").hide();
+        }
+        else if(!$.isNumeric($("#promocode").val()))
+        {
+          var letters = /^[a-zA-Z0-9]+$/;
+
+          var result = letters.test($("#promocode").val());
+
+          console.log(result);
+          // alert(result);
+
+          $("#insert").show();
+        }
+
+        // var reg_password1 = 'test123';
+        
+        // $('div').html(""+result);
+        // $("#insert").show();
+      }
+      else if($.isNumeric($("#promocode").val()))
+        {
+          $("#insert").hide();
+        }
+      else
+      {
+        $("#insert").hide();
+      }
+    
+    });
+
+
+    $("#promocode1,#associatedcredits1").bind('keyup', function(event) {
+      /* Act on the event */
+      
+      if($("#associatedcredits1").val()>=0 && $("#promocode1").val()!=0 && $("#associatedcredits1").val()!="")
+      {
+        if($.isNumeric($("#promocode1").val()))
+        {
+          $("#submit1").hide();
+        }
+        else if(!$.isNumeric($("#promocode1").val()))
+        {
+          var letters = /^[a-zA-Z0-9]+$/;
+
+          var result = letters.test($("#promocode1").val());
+
+          console.log(result);
+          // alert(result);
+
+          $("#submit1").show();
+        }
+
+        // var reg_password1 = 'test123';
+        
+        // $('div').html(""+result);
+        // $("#insert").show();
+      }
+      else if($.isNumeric($("#promocode1").val()))
+        {
+          $("#submit1").hide();
+        }
+      else
+      {
+        $("#submit1").hide();
+      }
+    
     });
 
     $('form#myform').on('submit', function(event) {
@@ -458,7 +590,7 @@ if(!isset($_SESSION[ 'userLogged']))
         
         for(var i=0;i<data.length;i++)
         {
-          var id=data[i]['promoId'];
+          var id=data[i]['code'];
           sel+="<option value="+id+">"+id+"</option>"
         }
         $("#sel").append(sel);
